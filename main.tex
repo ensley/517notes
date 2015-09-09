@@ -1,0 +1,665 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 2.0 (9/2/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times 
+% afterwards to propagate your changes to the document.
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn]{book} % Default font size and left-justified equations
+
+%----------------------------------------------------------------------------------------
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate [below=12cm] (midpoint) at (current page.north);
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{background}}; % Background image
+\draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering The Search for a Title\\[15pt] % Book title
+{\Large A Profound Subtitle}\\[20pt] % Subtitle
+{\huge Dr. John Smith}}}; % Author name
+\end{tikzpicture}};
+\end{tikzpicture}
+\vfill
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+~\vfill
+\thispagestyle{empty}
+
+\noindent Copyright \copyright\ 2013 John Smith\\ % Copyright notice
+
+\noindent \textsc{Published by Publisher}\\ % Publisher
+
+\noindent \textsc{book-website.com}\\ % URL
+
+\noindent Licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
+
+\noindent \textit{First printing, March 2013} % Printing/edition date
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_1.pdf} % Table of contents heading image
+
+\pagestyle{empty} % No headers
+
+\tableofcontents % Print the table of contents itself
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+\pagestyle{fancy} % Print headers again
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+
+\part{Part One}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 1
+%----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+
+\chapter{}
+
+\section{Lecture 1, August 24}
+
+\begin{definition}[Field] \label{def:1.1}
+	A class $\mathcal{F}$ of subsets of a non-empty set $\Omega$ is called a \emph{field} if it satisfies
+	\begin{enumerate}
+		\item $\varnothing \in \mathcal{F}$ and $\Omega \in \mathcal{F}$
+		\item If $A \in \mathcal{F}$, then $A^c \in \mathcal{F}$ (closed under complementation)
+		\item If $A \in \mathcal{F}$ and $B \in \mathcal{F}$, then $A \cup B \in \mathcal{F}$ (closed under finite unions)
+	\end{enumerate}
+	\emph{Note}: The term \emph{algebra} is often used to denote a field.
+\end{definition}
+
+\begin{definition}[$\sigma$-Field] \label{def:1.2}
+	A field is a \emph{$\sigma$-field} or \emph{$\sigma$-algebra} if it is closed under countable unions. That is, if $A_n \in \mathcal{F}$ is a $\sigma$-field, then $\bigcup_{n=1}^\infty A_n \in \mathcal{F}$.
+\end{definition}
+
+\begin{remark} \label{rem:1.1}
+	A field is a \emph{set of sets}. Suppose we are flipping a coin twice, so the sample space is $\Omega = \{\textrm{HH, HT, TH, TT}\}$. We observe an event $A \subset \Omega$, say $A = \{\textrm{TT}\}$. If we consider the set of sets $\mathcal{G} = \{\varnothing, \Omega, A, A^c\}$, then we \emph{cannot} say $\textrm{TT} \in \mathcal{G}$. Rather, we should write $\{\textrm{TT}\} \in \mathcal{G}$ or $A \in \mathcal{G}$. 
+\end{remark}
+
+The following are some examples of fields.
+
+\begin{itemize}
+	\item $\{\varnothing, \Omega\}$
+	\item $\{\varnothing, \Omega, A, A^c\}$
+\end{itemize}
+
+The above are very easy to verify using the three properties of Definition~\ref{def:1.1}. The next three take a little more thought.
+
+\begin{example}[Finite-cofinite field] \label{ex:1.1}
+	Define the set $\mathcal{F} = \{A:\;\textrm{either $A$ is finite or $A^c$ is finite}\}$. The term ``finite-cofinite'' comes from this definition. Every element is either finite, or its complement is. Suppose our sample space is the natural numbers, $\Omega = \{1,2,3,\dots\}$. Clearly $\varnothing \in \mathcal{F}$ and $\Omega \in \mathcal{F}$, satisfying property 1.
+
+	For property 2, suppose $A \in \mathcal{F}$. Again, this means that either $A$ is finite or $A^c$ is. If $A$ is finite, then $A^c \in \mathcal{F}$ because $(A^c)^c = A$ is finite. If $A^c$ is finite, then $A^c \in \mathcal{F}$ by our construction of $\mathcal{F}$. Either way, we see that $A^c \in \mathcal{F}$ and therefore property 2 holds.
+
+	For property 3, there are four cases in which $A \in \mathcal{F}$ and $B \in \mathcal{F}$: $A$ and $B$ are finite, $A^c$ and $B$ are finite, $A$ and $B^c$ are finite, or $A^c$ and $B^c$ are finite. Obviously if $A$ and $B$ are finite then $A \cup B$ is also finite and $A \cup B \in \mathcal{F}$. If $A^c$ and $B$ are finite, then $(A \cup B)^c = A^c \cap B^c \subset A^c$, so $(A \cup B)^c$ is finite and $A \cup B \in \mathcal{F}$. This argument shows that $A \cup B \in \mathcal{F}$ in the third and fourth cases as well. Therefore property 3 holds, and we can conclude that $\mathcal{F}$ is a field.
+
+	We might also ask whether $\mathcal{F}$ is a $\sigma$-field. Take $A_1 = \{2\}$, $A_2 = \{4\}$, $\dots$, $A_n = \{2n\}$. Then $\bigcup_{n=1}^\infty A_n = \{2,4,6,8,\dots\}$, the set of all even integers. This is an infinite set, as is its complement, the set of all odd integers. Thus $\bigcup_{n=1}^\infty A_n \notin \mathcal{F}$, meaning that $\mathcal{F}$ is a field but \emph{not} a $\sigma$-field.
+\end{example}
+
+\begin{example}[Countable-cocountable field] \label{ex:1.2}
+	Define the set $\mathcal{F} = \{A:\;\textrm{either $A$ is countable}$ $\textrm{or $A^c$ is countable}\}$. Suppose the sample space is some infinite set. Again, property 1 is satisfied because $\varnothing \in \mathcal{F}$ and $\Omega \in \mathcal{F}$. The arguments for why properties 2 and 3 are satisfied follow the same reasoning in Example~\ref{ex:1.1}.
+
+	Is $\mathcal{F}$ a $\sigma$-field? If $\Omega$ is a countable set, then $\mathcal{F} = \mathcal{P}(\Omega)$, the \emph{power set} of $\Omega$ (simply the set of all possible subsets of $\Omega$). $\mathcal{F}$ is a $\sigma$-field, because any $\bigcup_{n=1}^\infty A_n$ is a subset of $\Omega$, and therefore is contained in $\mathcal{F}$. If $\Omega$ is uncountable, then $\mathcal{F}$ is still a $\sigma$-field.
+\end{example}
+
+The previous two examples show two sets that appear similar and are both fields, but the one in Example~\ref{ex:1.2} is a $\sigma$-field whereas the one in Example~\ref{ex:1.1} is not.
+
+\begin{example} \label{ex:1.3}
+	Define $\mathcal{I} = \{(a,b]:\;0 \leq a \leq b \leq 1\}$. Then if we take $\mathcal{B}_0 = \{\varnothing, \textrm{ all finite disjoint}$ $\textrm{ unions of sets from } \mathcal{I}\}$, it turns out that $\mathcal{B}_0$ is a field on $(0,1]$. Again, it is easy to verify that properties 1 and 2 hold. Next, take $A = \bigcup_{i=1}^k I_i$ and $B = \bigcup_{j=1}^m I_j$. Then $A^c = \bigcap_{i=1}^k I_i^c$, which is still a finite union of disjoint intervals. So $A^c \in \mathcal{B}_0$, and $\mathcal{B}_0$ is indeed a field.
+
+	To determine whether it is a $\sigma$-field, take $A_n = (0,1-\frac{1}{n}]$. Then $\bigcup_{n=1}^\infty A_n = (0,1)$. This open interval cannot be written as a finite disjoint union of intervals, so $\mathcal{B}_0$ is \emph{not} a $\sigma$-field.
+\end{example}
+
+In the following definitions, let $\mathcal{A}$ be a class of subsets of a non-empty set $\Omega$.
+
+\begin{definition} \label{def:1.3}
+	The field \emph{generated} by $\mathcal{A}$ is the smallest field containing $\mathcal{A}$:
+	\[
+		f(\mathcal{A}) = \bigcap_{\textrm{field } \mathcal{G} \supset \mathcal{A}} \mathcal{G}.
+	\]
+
+	The $\sigma$-field \emph{generated} by $\mathcal{A}$ is the smallest $\sigma$-field containing $\mathcal{A}$:
+	\[
+		\sigma(\mathcal{A}) = \bigcap_{\sigma-\textrm{field } \mathcal{G} \supset \mathcal{A}} \mathcal{G}.
+	\]
+\end{definition}
+
+A very useful $\sigma$-field is the \emph{Borel $\sigma$-field}.
+
+\begin{definition} \label{def:1.4}
+	$\mathcal{B} = \sigma(\mathcal{I}) = \sigma(\mathcal{B}_0) = \sigma(\mathcal{I}_0) = \sigma(\textrm{open sets}) = \sigma(\textrm{open intervals})$ is the \emph{Borel $\sigma$-field} on $(0,1]$, where $\mathcal{I}_0 = \{(a,b] \in \mathcal{I}:\;a,b$ rationals$\}$. Sets in $\mathcal{B}$ are called \emph{Borel sets}.
+\end{definition}
+
+\section{Lecture 2, August 26}
+
+We will now show that $\sigma(\mathcal{I}_0) = \sigma(\mathcal{I})$. It is clear from the definitions of the sets that $\mathcal{I}_0 \subset \mathcal{I}$, so trivially $\sigma(\mathcal{I}_0) \subset \sigma(\mathcal{I})$. Now suppose $(a,b] \in \mathcal{I}$. We can always find $a_n \in (a,b]$ such that $a_n$ is rational and $a_n \downarrow a$, meaning that the sequence of $a_n$'s decreases and approaches $a$. Then taking the infinite union $\bigcup_{n=1}^\infty (a_n,b] = (a,b]$. Similarly, we can find a rational $b_n$ such that $b_n \downarrow b$. Then $\bigcap_{n=1}^\infty (a_n,b_n] = (a_n,b]$, and each $(a_n,b_n] \in \mathcal{I}_0$. Thus $\mathcal{I} \subset \sigma(\mathcal{I}_0) \subset \sigma(\mathcal{I})$, meaning that $\sigma(\mathcal{I}) \subset \sigma(\mathcal{I}_0) \subset \sigma(\mathcal{I})$. We can conclude from this that $\sigma(\mathcal{I}) = \sigma(\mathcal{I}_0)$.
+
+\begin{remark}\label{rem:1.2}
+	A $\sigma$-field is \emph{countably generated}, or \emph{separable}, if it is generated by some countable class of sets.
+\end{remark}
+
+\begin{theorem} \label{thm:1.1}
+	For a nonempty class $\mathcal{A}$, the field $f(\mathcal{A})$ generated by $\mathcal{A}$ is minimal (if $\mathcal{H}$ is a field and $\mathcal{A} \subset \mathcal{H}$, then $f(\mathcal{A}) \subset \mathcal{H}$) and has the form
+	\[
+		\mathcal{G} = f(\mathcal{A}) = \left\{\bigcup_{i=1}^m \bigcap_{j=1}^{n_i} A_{ij}:\;A_{ij} \textrm{ or } A_{ij}^c \in \mathcal{A},\;\bigcap_{j=1}^{n_i} A_{ij} \textrm{ are disjoint}\right\}.
+	\]
+	In short, the sets in $f(\mathcal{A})$ can be explicitly presented, which is not generally true of the sets in $\sigma(\mathcal{A})$.
+\end{theorem}
+
+\begin{proof}
+	Clearly $\mathcal{A} \subset \mathcal{G}$, and any field containing $\mathcal{A}$ will also contain $\mathcal{G}$. So the ``minimality'' idea will hold, and all that remains is to show that $\mathcal{G}$ is indeed a field.
+
+	Take $C = \bigcup_{i=1}^m \bigcap_{j=1}^{n_i} A_{ij}$ and $D = \bigcup_{s=1}^k \bigcap_{l=1}^{r_s} B_{sl}$ such that $C,D \in \mathcal{G}$. That is, all $\bigcap_{j=1}^{n_i} A_{ij}$ and $\bigcap_{l=1}^{r_s} B_{sl}$ are disjoint, either $A_{ij}$ or $A_{ij}^c$ are in $\mathcal{A}$, and either $B_{sl}$ or $B_{sl}^c$ are in $\mathcal{A}$. Then $C \cup D = \bigcup_{i=1}^m \bigcup_{s=1}^k \left( \bigcap_{j=1}^m A_{ij} \right) \cap \left( \bigcap_{l=1}^{r_s} B_{sl} \right)$. Everything to the right of the first union is disjoint, so $C \cup D \in \mathcal{G}$. Furthermore, $C^c = \bigcap_{i=1}^m \bigcup_{j=1}^{n_i} A_{ij}^c = \bigcup_{j=1}^{n_i} \left( A_{ij}^c \cap \bigcap_{k=1}^{j-1} A_{ik} \right)$, and again everything in the parentheses is disjoint, so $C^c \in \mathcal{G}$. Therefore $\mathcal{G}$ is a field.
+\end{proof}
+
+As an example of this fact, consider again the class $\mathcal{I} = \{(a,b]:\;0 \leq a \leq b \leq 1\}$, where $\Omega = (0,1]$. Here, using Theorem~\ref{thm:1.1}, $f(\mathcal{I}) = \{\varnothing, \textrm{ finite disjoint unions of intervals}\}$. There is no such nice description of the Borel $\sigma$-field $\mathcal{B}$, or of $\sigma$-fields in general.
+
+\vspace{10pt}
+
+Some elementary properties of fields:
+
+\begin{enumerate}
+	\item If $\mathcal{A}$ consists of singleton sets, then $f(\mathcal{A})$ is the finite-cofinite field $f(\mathcal{A}) = \{A:\;$ either $A$ is finite or $A^c$ is finite$\}$.
+	\item $f(\mathcal{A}) \subset \sigma(\mathcal{A})$.
+	\item If $\mathcal{A}$ is finite, then $f(\mathcal{A}) = \sigma(\mathcal{A})$.
+	\item If $\mathcal{A}$ is countable, then $f(\mathcal{A})$ is countable.
+	\item If $\mathcal{F}_1$ and $\mathcal{F}_2$ are fields, then $f(\mathcal{F}_1 \cup \mathcal{F}_2) = \mathcal{G}$, where
+	\[
+		\mathcal{G} = \left\{ \bigcup_{i=1}^m \left( A_i \cap B_i \right):\;A_i \in \mathcal{F}_1,\;B_i \in \mathcal{F}_2,\;A_i \cap B_i \textrm{ are disjoint} \right\}.
+	\]
+	This can be seen by noting that $\mathcal{G}$ is closed under intersections, and $A^c \cap B^c = A^c \cup (A \cap B^c)$. The important fact here is that the union of two fields is not necessarily a field itself. For example, let $\Omega = \{1,2,3,4\}$, $A = \{1\}$, $B = \{2\}$, $\mathcal{F}_1 = \{\varnothing, \Omega, A, A^c\}$, and $\mathcal{F}_2 = \{\varnothing, \Omega, B, B^c\}$. Then $\mathcal{F}_1 \cup \mathcal{F}_2 = \{\varnothing, \Omega, A, B, A^c, B^c\}$, which is not a field because $A \cup B$ is not there.
+	\item If $\mathcal{F}_n \subset \mathcal{F}_{n+1}$ are fields, then $\bigcup_n \mathcal{F}_n$ is a field. However, it is not necessarily a $\sigma$-field, even if the $\mathcal{F}_n$ are all $\sigma$-fields. For example, let $\Omega = \{1,2,3,\dots\}$ and $\mathcal{F}_n = \sigma(\left\{\{k\}:\;1 \leq k \leq n \right\})$. Then $\bigcup_n \mathcal{F}_n$ is the finite-cofinite field, which we have already seen is not a $\sigma$-field.
+	\item $\sigma(\mathcal{A})$ is countably generated (separable) if $\mathcal{A}$ is countable.
+	\item The Borel $\sigma$-field $\mathcal{B} = \sigma(\{(a,b]:\;0 \leq a \leq b \leq 1$ rationals$\})$ is countably generated.
+	\item $\mathcal{F} = \{A \subset (0,1]:\;A$ or $A^c$ is countable$\}$ is \emph{not} countably generated. To show this, suppose $\mathcal{F} = \sigma(\{A_1,A_2,\dots\}) = \sigma(\{B_1,B_2,\dots\})$, where $B_i = A_i$ if $A_i$ is countable, or $B_i = A_i^c$ if $A_i$ is not countable. In short, we are assuming that $\mathcal{F}$ is separable, and we will work towards a contradiction. We have constructed every $B_i$ to be countable, and so we can define $\Omega_0 = \bigcup_{i=1}^\infty B_i$ that is countable as well. Now $\mathcal{F} = \sigma(\mathcal{A}_0)$, where $\mathcal{A}_0 = \{\{x\}:\;x \in \Omega_0\}$. Since $\mathcal{A}_0 \subset \mathcal{G} = \{B,\;B \cup \Omega_0^c:\;B \subset \Omega_0\} \subset \mathcal{F}$, and $\mathcal{G}$ is a $\sigma$-field, it follows that $\mathcal{G} = \mathcal{F}$. But if $y \in \Omega_0^c$, then $\{y\} \notin \mathcal{G}$. This is a contradiction, and so $\mathcal{F}$ is not separable.
+	\item If $\mathcal{F}_1 \subset \mathcal{F}_2$ and $\mathcal{F}_2$ is countably generated, then $\mathcal{F}_1$ need not be countably generated. This is counterintuitive, but it is readily apparent from the previous examples; suppose $\mathcal{F}_1$ is the countable-cocountable $\sigma$-field on $(0,1]$ and $\mathcal{F}_2 = \mathcal{B}$, the Borel $\sigma$-field. 
+\end{enumerate}
+
+\section{Lecture 3, August 28}
+
+\begin{definition}[Probability] \index{Probability} \label{def:probability}
+	Let $\mathcal{F}$ be a field on a nonempty set $\Omega$. A set function $P$ on $\mathcal{F}$ is called a \emph{probability} if it satisfies
+	\begin{enumerate}[label=(\Roman*)]
+		\item $0 \leq P(A) \leq 1$ for all $A \in \mathcal{F}$
+		\item $P(\varnothing) = 0$ and $P(\Omega) = 1$
+		\item \emph{Countable additivity} --- If $A_n$ are disjoint sets in $\mathcal{F}$, and $\bigcup_{n=1}^\infty A_n \in \mathcal{F}$, then $P \left( \bigcup_{n=1}^\infty A_n \right) = \sum_{n=1}^\infty P(A_i)$
+		\item \emph{Finite additivity} --- For $A_i \in \mathcal{F}$ disjoint, $P \left( \bigcup_{i=1}^n A_i \right) = \sum_{i=1}^n P(A_i)$
+		\item \emph{Countable subadditivity} --- If $B_n$, $\bigcup_{n=1}^\infty B_n \in \mathcal{F}$ then $P \left( \bigcup_{n=1}^\infty B_n \right) \leq \sum_{n=1}^\infty P(B_n)$.
+	\end{enumerate}
+	The inequality in (V) is known as \emph{Boole's Inequality}.
+\end{definition}
+
+Under conditions (I) and (II), condition (III) implies (IV) and (V), and conversely (IV) and (V) together imply (III). The latter will now be proven.
+
+\begin{proof}
+	Suppose $A_n \in \mathcal{F}$ are disjoint, $\bigcup_{n=1}^\infty A_n \in \mathcal{F}$, and conditions (IV) and (V) hold. Then
+	\[
+		\sum_{i=1}^n P(A_i) = P \left( \bigcup_{i=1}^n A_i \right) \leq P \left( \bigcup_{i=1}^\infty A_i \right) \leq \sum_{i=1}^\infty P(A_i).
+	\]
+	Letting $n \rightarrow \infty$, we have
+	\[
+		\sum_{i=1}^\infty P(A_i) \leq P \left( \bigcup_{i=1}^\infty A_i \right) \leq \sum_{i=1}^\infty P(A_i)
+	\]
+	and therefore $P \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)$ as desired.
+\end{proof}
+
+Note that (IV) alone does not guarantee (III). Take a nonempty sample space $\Omega = \{1,2,\dots\}$ and $\mathcal{F}$ to be the finite-cofinite field. Furthermore, define $P$ to be a function on $\mathcal{F}$ where
+\[
+	P(A) = \begin{cases}
+		0 & \textrm{if } A \textrm{ is finite} \\
+		1 & \textrm{if } A^c \textrm{ is finite}.
+	\end{cases}
+\]
+It is clear that properties (I) and (II) hold in this case. (IV) also holds: Take $A$, $B$ disjoint (so $A \cap B = \varnothing$). If both $A$ and $B$ are finite, then the union is also finite, so $P(A \cup B) = 0 = P(A) + P(B)$. If one is cofinite, then $A \cup B$ is cofinite, so $P(A \cup B) = 1 = P(A) + P(B)$. If both are cofinite, then it turns out that $A$ and $B$ could not have been disjoint in the first place. This is because $(A \cap B)^c = A^c \cup B^c$ is finite, so $A \cap B$ must be cofinite and therefore $A \cap B \neq \varnothing$. So we don't need to consider this case at all.
+
+On the other hand, define $A_n = \{n\}$. The $A_n$ are disjoint, and $\bigcup_{n=1}^\infty A_n = \Omega \in \mathcal{F}$. However, each $P(A_n) = 0$, so $\sum_{n=1}^\infty P(A_i) = 0$, yet $P(\bigcup_{n=1}^\infty A_n) = P(\Omega) = 1$. Countable additivity fails.
+
+\begin{remark}
+	If we have a general, non-disjoint group of sets $B_1,B_2,\dots \in \mathcal{F}$, we can construct a disjoint group $A_1,A_2,\dots$ such that the union of all sets in each group are the same. This process of \emph{disjointification} often proves useful. Define
+	\begin{align*}
+		A_1 &= B_1 \\
+		A_2 &= B_2 \cap B_1^c \\
+		A_3 &= B_3 \cap B_2^c \cap B_1^c \\
+		&\vdots \\
+		A_n &= B_n \cap \left( \bigcup_{j < n} B_j \right)^c.
+	\end{align*}
+	Then $\bigcup_{i=1}^n A_i = \bigcup_{i=1}^n B_i$, and the $A_i$ are disjoint.
+\end{remark}
+
+We can use disjointification to prove some useful statements. For example, we can show that if $C \subset D$, then $P(C) \leq P(D)$:
+\begin{align*}
+	D &= C \cup (D \cap C^c) \tag{by disjointification} \\
+	P(D) &= P(C) + P(D \cap C^c) \\
+	&\geq P(C) \tag{probability is non-negative}.
+\end{align*}
+
+\begin{definition}[Continuity from below/above] \label{def:continuity-from-below}
+	If $A_n \in \mathcal{F}$, $A \in \mathcal{F}$, and $A_n \uparrow A$ (meaning that $A_1 \subset A_2 \subset \cdots \subset A_n$ and $\bigcup_i A_i = A$), then $P(A_n) \uparrow P(A)$. This is called \emph{continuity from below}.
+
+	Similarly, if $B_n \in \mathcal{F}$, $B \in \mathcal{F}$, and $B_n \downarrow B$ (meaning that $B_1 \supset B_2 \supset \cdots \supset B_n$ and $\bigcap_i B_i = B$), then $P(B_n) \downarrow P(B)$. This is called \emph{continuity from above}.
+\end{definition}
+
+Recall the function $P$ defined earlier:
+\[
+	P(A) = \begin{cases}
+		0 & \textrm{if } A \textrm{ is finite} \\
+		1 & \textrm{if } A^c \textrm{ is finite}.
+	\end{cases}
+\]
+This is \emph{not} a probability on $\Omega = \{1,2,\dots\}$. Continuity from below is not satisfied. To see this, define $A_n = \{1,2,\dots\}$. $A_n$ is finite, so $P(A_n)=0$. Then $A_n \uparrow \Omega = \{1,2,3,\dots\}$, but $P(\Omega)=1$.
+
+\begin{theorem} \label{thm:1.2}
+	Countable additivity implies $P(C_n) \downarrow 0$ whenever $C_n \in \mathcal{F}$ and $C_n \downarrow \varnothing$.
+\end{theorem}
+
+\begin{proof}
+	Suppose we have a sequence of sets $C_n$ such that $C_n \downarrow \varnothing$. That is, $C_1 \supset C_2 \supset \cdots \supset C_n$. Construct a sequence of sets $A_n$ in the following way:
+	\begin{align*}
+		A_1 &= C_1 - C_2 \\
+		A_2 &= C_2 - C_3 \\
+		&\vdots \\
+		A_n &= C_n - A_{n+1}.
+	\end{align*}
+	Then the $A_n$ are disjoint, and $C_n = \bigcup_{i=n}^\infty A_i$. Note that this means that $C_1 = \bigcup_{i=1}^\infty A_i$. Now $P(C_1) = P \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i) \leq 1 < \infty$, by countable additivity. Thus $P(C_n) = \sum_{i=n}^\infty P(A_i) \rightarrow 0$ because it is the tail of a converging series.
+\end{proof}
+
+We will now prove that Theorem~\ref{thm:1.2} and finite additivity together imply countable additivity.
+
+\begin{proof}
+	If we define $D_n = \bigcup_{i=1}^n A_i$ and $D = \bigcup_{i=1}^\infty A_i$, then $D - D_n \downarrow \varnothing$ and $P(D-D_n) \downarrow 0$. Now $P(D) = P(D-D_n) + P(D_n)$, and $P(D_n) = \sum_{i=1}^n P(A_i) \rightarrow \sum_{i=1}^\infty P(A_i)$.
+\end{proof}
+
+Furthermore, Theorem~\ref{thm:1.2} implies continuity from above and continuity from below.
+
+\begin{definition}[Probability space] \label{def:probability-space}
+	If $\mathcal{F}$ is a $\sigma$-field on $\Omega$ and $P$ is a probability measure on $\mathcal{F}$, the triple $(\Omega,\mathcal{F},P)$ is called a \emph{probability measure space}, or simply a \emph{probability space}.
+\end{definition}
+
+The following examples illustrate the concept of a probability space.
+
+\begin{example} \label{ex:1.4}
+	Let $\mathcal{F}$ be the finite-cofinite field on some nonempty set $\Omega$, and let $P$ be defined such that $P(A) = 0$ or 1 depending on whether $A$ is finite or not. If $\Omega$ is a countable set, then $P$ is not a probability (as we saw earlier). However, if $\Omega$ is uncountable, then $P$ is a valid probability, and $(\Omega,\mathcal{F},P)$ is a probability space.
+\end{example}
+
+\begin{example} \label{ex:1.5}
+	Let $\mathcal{F}$ be the countable-cocountable $\sigma$-field on an uncountable set $\Omega$. Define $P$ such that $P(A) = 0$ or 1 depending on whether $A$ is countable or not. Then $P$ is a probability measure, and $(\Omega,\mathcal{F},P)$ is a probability space.
+\end{example}
+
+\begin{example} \label{ex:1.6}
+	Let $\Omega = (0,1]$, and define a function $\lambda(a,b) = b-a$, where $0 \leq a \leq b \leq 1$. This is our standard concept of \emph{length} for an interval. Furthermore, the length of the union of disjoint intervals is the sum of the lengths of each individual interval:
+	\[
+		\lambda \left( \bigcup_{i=1}^k (c_i,d_i] \right) = \sum_{i=1}^k (d_i-c_i), \qquad \textrm{$(c_i,d_i]$ are disjoint}.
+	\]
+	Then $\lambda$ is a (countably additive) probability measure on $\mathcal{B}_0 = f(\mathcal{I})$.
+\end{example}
+
+\section{Lecture 4, August 31}
+
+How can we extend this $\lambda$ to $\sigma(\mathcal{I}) = \sigma(\mathcal{B}_0)$, the Borel $\sigma$-field? As previously mentioned, there is not a nice concise way to describe $\sigma$-fields. We could define $\mathcal{B}_{\sigma} = \{\bigcup_{i=1}^\infty A_i:\;A_i \in \mathcal{B}_0\}$, but this is not closed under complementation and so is not a $\sigma$-field. Then we might try $\mathcal{B}_{\sigma\delta} = \{\bigcap_{i=1}^\infty B_i:\;B_i \in \mathcal{B}_{\sigma}\}$, but this still won't work. Even if we tried an infinite sequence $\mathcal{B}_{\sigma\delta\sigma\delta\cdots}$ of these unions and intersections, we still would not be left with a $\sigma$-field. The bottom line is that we will need another way to describe them.
+
+\begin{definition}[Outer measure] \label{def:outer-measure}
+	Let $\Omega$ be a non-empty set. $P^*$ on $2^\Omega$ (also known as the power set $\mathcal{P}(\Omega)$) is an \emph{outer measure} if it satisfies the following properties.
+	\begin{enumerate}[label=(\Roman*)]
+		\item $P^*(\varnothing) = 0$
+		\item $P^*(A) \geq 0$
+		\item $P^*(A) \leq P^*(B)$ whenever $A \subseteq B$
+		\item $P^*(\bigcup_i A_i) \leq \sum_i P^*(A_i)$ --- countable sub-additivity
+	\end{enumerate}
+\end{definition}
+
+\begin{notation}
+	For convenience, we will sometimes omit the intersection symbol $\cap$. For example, $AE = A \cap E$.
+\end{notation}
+
+A good measure should satisfy $P^*(A)+P^*(A^c)=1$ on $\sigma(\mathcal{F}_0)$. This intuitively makes sense when one thinks about the usual concept of probability. However, it turns out that this property is somewhat difficult to handle in practice. It is easier to work with something like
+\[
+	\mathcal{M}' = \{A \subset \Omega:\;P^*(AE)+P^*(A^cE)=P^*(E) \textrm{ for all } E \subset \Omega\}.
+\]
+Inequalities are even more useful, so we relax this to
+\[
+	\mathcal{M} = \{A \subset \Omega:\;P^*(AE)+P^*(A^cE) \leq P^*(E) \textrm{ for all } E \subset \Omega\}.
+\]
+
+We will now present and prove some facts about this particular collection based on an outer measure.
+
+\begin{theorem} \label{thm:1.3}
+	Define $\mathcal{M} = \mathcal{M}(P^*) = \{A \subset \Omega:\;P^*(AE)+P^*(A^cE) \leq P^*(E)$ for all $E \subset \Omega\}$, where $P^*$ is an outer measure on $\mathcal{F}_0$. Then
+	\begin{enumerate}[label=(\alph*)]
+		\item $\mathcal{M}$ is a field,
+		\item If $A_i \in \mathcal{M}$ are disjoint, then $P^*(E \cap (\bigcup_i A_i)) = \sum_i P^*(EA_i)$,
+		\item $\mathcal{M}$ is a $\sigma$-field and $P^*$ is countably additive on $\mathcal{M}$.
+		\item $\mathcal{F}_0 \subset \mathcal{M}$
+		\item $P^*$ agrees with $P$ everywhere on $\mathcal{F}_0$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	The proofs for (a), (b), and (c) depend only on properties (I)-(IV) in Definition~\ref{def:outer-measure}.
+
+	\vspace{10pt}
+	First we will show (a). Recall that to prove $\mathcal{M}$ is a field, we need to verify that $\varnothing, \Omega \in \mathcal{M}$, that $\mathcal{M}$ is closed under complementation, and that it is closed under finite unions. Inspection of the definition of $\mathcal{M}$ will reveal that it is symmetric about $A$; we can switch $A$ with $A^c$ with no change. Therefore $\mathcal{M}$ is trivially closed under complementation. Also, $P^*(\varnothing \cap E) + P^*(\Omega \cap E) = P^*(E)$, so $\varnothing, \Omega \in \mathcal{M}$.
+
+	Now we only need to show closure under finite unions. For any $A,B \in \mathcal{M}$, $(AB)^c = AB^c \cup A^cB^c \cup A^cB$ (this is easy to verify using a Venn diagram).
+	\begin{align*}
+		P^*(ABE) + P^*((AB)^cE) &\leq P^*(ABE) + P^*(AB^cE) + P^*(A^cB^cE) + P^*(A^cBE) \tag{by property (IV)} \\
+		&\leq P^*(ABE) + P^*(B^cE) + P^*(A^cBE) \tag{because $A \in \mathcal{M}$} \\
+		&\leq P^*(B^cE) + P^*(BE) \tag{because $A \in \mathcal{M}$} \\
+		&\leq P^*(E) \tag{because $B \in \mathcal{M}$}.
+	\end{align*}
+	Therefore $AB \in \mathcal{M}$. We have shown that $\mathcal{M}$ is closed under finite intersection. If $A \cap B \in \mathcal{M}$, then so is $(A \cap B)^c = A^c \cup B^c$, and so is $A \cup B$. Thus $\mathcal{M}$ is closed under finite union as well. We can conclude that $\mathcal{M}$ is a field.
+
+	\vspace{10pt}
+	Next, we will prove (b). Suppose $A_1,A_2 \in \mathcal{M}$ and $A_1$ and $A_2$ are disjoint. Then
+	\begin{align*}
+		P^*(E(A_1 \cup A_2)) &= P^*(E(A_1 \cup A_2)A_1) + P^*(E(A_1 \cup A_2)A_1^c) \\
+		&= P^*(EA_1)+P^*(EA_2) \tag{because $A_2 \subset A_1^c$}.
+	\end{align*}
+	By induction, for disjoint $A_1 \in \mathcal{M}$ we have
+	\[
+		P^*\left( E \cap \left( \bigcup_{i=1}^n A_i \right) \right) = \sum_{i=1}^n P^*(EA_i).
+	\]
+	Because $P^*(A) \geq 0$ for any $A$, It follows that $P^*(E \cap (\bigcup_{i=1}^\infty A_i)) \geq P^*(E \cap (\bigcup_{i=1}^n A_i))$. Taking the limit leads us to conclude that 
+	\[
+		P^* \left( E \cap \left( \bigcup_{i=1}^\infty A_i \right) \right) \geq P^*\left( E \cap \left( \bigcup_{i=1}^n A_i \right) \right) = \sum_{i=1}^n P^*(EA_i) \rightarrow \sum_{i=1}^\infty P^*(EA_i).
+	\]
+	But property (IV), countable subadditivity, tells us that $P^*(E \cap (\bigcup_{i=1}^\infty A_i)) \leq \sum_{i=1}^\infty P^*(EA_i)$. Therefore
+	\[
+		P^* \left( E \cap \left( \bigcup_{i=1}^\infty A_i \right) \right) = \sum_{i=1}^\infty P^*(EA_i)
+	\]
+	as desired.
+
+	\vspace{10pt}
+	Finally we show (c). We already know $\mathcal{M}$ is a field, so to show it is a $\sigma$-field all we need is closure under countable unions. Let $B_1,B_2,\cdots \in \mathcal{M}$, and $B = \bigcup_{i=1}^\infty B_i$. Disjointify the $B_i$s, so define $A_1 = B_1, \dots, A_n = B_n \cap (\bigcup_{i<n} B_i)^c$. Then all $A_i \in \mathcal{M}$, the $A_i$ are disjoint, and the unions are the same: $\bigcup_{i=1}^n A_i = \bigcup_{i=1}^n B_i \uparrow B$.
+	\begin{align*}
+		P^*(E) &= P^*\left(E \cap \left(\bigcup_{i=1}^n A_i\right)\right) + P^*\left(E \cap \left(\bigcup_{i=1}^n A_i\right)^c\right) \\
+		&\geq \sum_{i=1}^n P^*(EA_i) + P^*(EB^c) \rightarrow \sum_{i=1}^\infty P^*(EA_i) + P^*(EB^c) \tag{taking limit as $n \rightarrow \infty$} \\
+		&\geq P^*(EB) + P^*(EB^c) \tag{by property (IV)}.
+	\end{align*}
+	So $B = \bigcup_{i=1}^\infty B_i \in \mathcal{M}$, and hence $\mathcal{M}$ is a $\sigma$-field. We can easily see that $P^*$ is countably additive on $\mathcal{M}$ by taking $E = \Omega$ in (b).
+\end{proof}
+
+Again, to this point we have used only properties (I)-(IV) in Definition~\ref{def:outer-measure}.
+
+\section{Lecture 5, September 2}
+
+Now, assume that $P$ is a probability measure on a field $\mathcal{F}_0$ of subsets of a nonempty set $\Omega$. Define
+\[
+	P^*(E) = \inf \left\{ \sum_i P(A_i):\;E \subset \bigcup_i A_i, \textrm{ and } A_i \in \mathcal{F}_0 \right\}.
+\]
+This $P^*$ satisfies all four properties of Definition~\ref{def:outer-measure}.
+
+\begin{proof}
+	Property (I) is clearly satisfied by letting all the $A_i = \varnothing$. Also, $P$ is nonnegative on $\mathcal{F}_0$, so $P^*$ must also be nonnegative, and thus property (II) is satisfied. This non-negativity is why property (III) is satisfied as well.
+
+	Property (IV) is a bit harder to show. Let $A_n \subset \Omega$ and fix some $\epsilon > 0$. Then
+	\[
+		P^*(A_n) = \inf \left\{ \sum_k P(C_{nk}):\;A_n \subset \bigcup_k C_{nk},\;C_{nk} \in \mathcal{F}_0 \right\}.
+	\]
+	Now there is some collection $B_{nk} \in \mathcal{F}_0$ such that $A_n \subset \bigcup_k B_{nk}$ and $\sum_k P(B_{nk}) < P^*(A_n) + \epsilon 2^{-n}$. Since $\bigcup_n A_n \subset \bigcup_n \bigcup_k B_{nk}$, we have
+	\[
+		P^*\left(\bigcup_n A_n\right) \leq \sum_n \sum_k P(B_{nk}) \leq \sum_n P^*(A_n) + \epsilon.
+	\]
+	$\epsilon$ can be taken to be arbitrarily small, and thus we have countable sub-additivity. $P^*$ is therefore an outer measure.
+\end{proof}
+
+Next we will establish the remaining two facts from Theorem~\ref{thm:1.3}.
+\begin{itemize}
+	\item $\mathcal{F}_0 \subset \mathcal{M}$
+	\item $P^*$ agrees with $P$ everywhere on $\mathcal{F}_0$.
+\end{itemize}
+
+\begin{example}[Exercise 3.3(a)]
+	Consider the following scenario: Let $\Omega = \{1,2,3\}$. The power set of $\Omega$ is $2^\Omega = \{\varnothing,\Omega,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}$. Now let $P_1(\{2,3\}) = 1$, $P_1(\{1\})=0$, and $P_2(\{2,3\})=0$, $P_2(\{1\})=1$ be two probability measures on the field $\mathcal{F}_0 = \{\varnothing,\Omega,\{1\},\{2,3\}\}$.
+
+	First we will establish $\mathcal{F_0} \subset \mathcal{M}(P_1^*)$.
+	If $A = \{2\}$, then $P_1^*(A\Omega) = P_1^*(A) = P_1^*(\{2,3\}) = 1$ and $P_1^*(A^c\Omega) = P_1^*(A^c) = P_1^*(\{1,3\}) = 1$. But $P_1^*(\Omega) = 1$, and $1+1 > 1$. This means that $\{2\} \notin \mathcal{M}(P_1^*)$ and $\{1,3\} \notin \mathcal{M}(P_1^*)$. Similarly, we can check that $\{3\}, \{1,2\} \notin \mathcal{M}(P_1^*)$. The only sets left from $2^\Omega$ are the ones that make up $\mathcal{F}_0$, so $\mathcal{F}_0 = \mathcal{M}(P_1^*)$.
+
+	Now we focus on $P_2^*$. For a particular $A$ and any $E$, property (III) of Definition~\ref{def:outer-measure} guarantees that $P_2^*(AE) \leq P_2^*(A)$ because $A \cap E \subseteq A$. Suppose $1 \notin A$. If this is the case, then $P_2^*(A) = 0$ (since the only two possibilities for $A$ in $\mathcal{F}$ are $\varnothing$ and $\{2,3\}$, and $P_2^*$ is zero on each of these). This establishes that $P_2^*(AE) = 0$. It is also true that $P_2^*(A^cE) \leq P_2^*(E)$, also by property (III) of Definition~\ref{def:outer-measure}. Putting these together,
+	\[
+		P_2^*(AE) + P_2^*(A^cE) \leq 0 + P_2^*(E)
+	\]
+	which indicates that $A \in \mathcal{M}(P_2^*)$ and, as a direct result, $A^c \in \mathcal{M}(P_2^*)$. This covers every possible set $A$, and therefore $\mathcal{M}(P_2^*) = 2^\Omega$.
+\end{example}
+
+We will now prove that $\mathcal{F}_0 \subset \mathcal{M}$.
+
+\begin{proof}
+	Let $A \in \mathcal{F}_0$, and $E \subset \Omega$. Let $A_i \in \mathcal{F}_0$ such that $E \subset \bigcup_{i=1}^\infty A_i$. Note that $AE \subset \bigcup_{i=1}^\infty AA_i$ and $A^cE \subset \bigcup_{i=1}^\infty A^cA_i$. So
+	\[
+		P^*(EA) + P^*(EA^c) \leq \sum_{i=1}^\infty P(AA_i) + \sum_{i=1}^\infty P(A^cA_i) = \sum_{i=1}^\infty P(A_i).
+	\]
+	So $P^*(EA) + P^*(EA^c) \leq P^*(E)$, and thus $A \in \mathcal{M}$.
+\end{proof}
+
+Only the finite additivity of $P$ was used above. Next we will show that $P^*=P$ on $\mathcal{F}_0$.
+
+\begin{proof}
+	We have already seen that $P^*(A) \leq P(A)$ if $A \in \mathcal{F}_0$. If we have some $A_i \in \mathcal{F}_0$ such that $\bigcup_{i=1}^\infty A_i \supset A$, then
+	\[
+		P(A) \leq \sum_{i=1}^\infty P(AA_i) \leq \sum_{i=1}^\infty P(A_i)
+	\]
+	by the countable sub-additivity of $P$ on $\mathcal{F}_0$. Notice that we cannot say directly that $P(A) \leq \sum_{i=1}^\infty P(A_i)$ because there is no guarantee that $\bigcup_{i=1}^\infty A_i \in \mathcal{F}_0$. The intermediate step is therefore necessary.
+
+	The above gives us that $P(A) \leq P^*(A)$. Therefore $P^*$ restricted to $\mathcal{F}_0$ agrees with $P$, as desired.
+\end{proof}
+
+This leads us to an important result.
+
+\begin{theorem}[Extension Theorem] \label{thm:extension}
+	Every probability measure on a field $\mathcal{F}_0$ has an extension to $\sigma(\mathcal{F}_0)$.
+\end{theorem}
+
+\begin{proof}
+	$\mathcal{M}$ is a $\sigma$-field containing $\mathcal{F}_0$, so $\sigma(\mathcal{F}_0) \subset \mathcal{M}$. Furthermore, $P^*$ is a probability measure on $\mathcal{M}$, and hence $P^*$ restricted to $\sigma(\mathcal{F}_0)$ is a probability measure as well. Finally, $P^*(A)=P(A)$ for all $A \in \mathcal{F}_0$.
+\end{proof}
+
+When we restrict $P^*$ to $\sigma(\mathcal{F}_0)$, then $P^*$ is defined on all subsets of $\Omega$. Define
+\begin{align*}
+	P_0(A) &= P^*(A) \qquad \textrm{if } A \in \mathcal{M} \\
+	P_1(A) &= P^*(A) \qquad \textrm{if } A \in \sigma(\mathcal{F}_0) \\
+	P_2(A) &= P^*(A) \qquad \textrm{if } A \in \mathcal{F}_0.
+\end{align*}
+
+$P_0$ is \emph{not} a probability measure on $\sigma(\mathcal{F}_0)$ or $\mathcal{F}_0$, for example. The values are the same (and are equal to the values of $P^*$), but the \emph{domains}, the collections of sets on which they are defined, differ.
+
+Is it possible to have two probability measures, say $Q_1$ and $Q_2$, on $\sigma(\mathcal{F}_0)$ such that $Q_1=Q_2$ on $\mathcal{F}_0$? We will now work towards a uniqueness theorem. First some definitions.
+
+\begin{definition}[$\pi$-system] \label{def:pi-system}
+	A class $\mathcal{P}$ is called a \emph{$\pi$-system} if $A,B \in \mathcal{P}$ implies $AB \in \mathcal{P}$ (closed under intersection).
+\end{definition}
+
+\begin{definition}[$\lambda$-system] \label{def:lambda-system}
+	A class $\mathcal{L}$ is called a \emph{$\lambda$-system} if if satisfies the following conditions:
+	\begin{enumerate}[label=($\lambda$\arabic*)]
+		\item $\Omega \in \mathcal{L}$
+		\item $A \in \mathcal{L}$ implies $A^c \in \mathcal{L}$
+		\item If $A_1,A_2,\dots \in \mathcal{L}$ and are disjoint, then $\bigcup_i A_i \in \mathcal{L}$. (Closed under countable disjoint unions)
+	\end{enumerate}
+\end{definition}
+
+A $\lambda$-system is ``almost'' a $\sigma$-field. The only difference is the additional restriction of disjointness in property ($\lambda$3). Why is this distinction made? Suppose we have $P_1$ and $P_2$ such that for all $A_i$, $P_1(A_i)=P_2(A_i)$. We can't really say that
+\[
+	P_1 \left( \bigcup_{i=1}^\infty A_i \right) = P_2 \left( \bigcup_{i=1}^\infty A_i \right).
+\]
+We need disjointness to prove uniqueness.
+
+\begin{example}[$\lambda$-system but not a $\sigma$-field] \label{ex:1.6}
+	Suppose $\Omega = \{1,2,3,4\}$. Let
+	\[
+	\mathcal{L} = \{\varnothing, \Omega, \{1,2\}, \{2,3\}, \{3,4\}, \{1,4\}\}.
+	\]
+	Notice that $\mathcal{L}$ is of the form $\mathcal{L}=\{\varnothing, \Omega, A, B, A^c, B^c\}$, where $\varnothing \neq A \neq B \neq \Omega$, $A \neq B^c$, and $A \cap B \neq \varnothing$.
+\end{example}
+
+\begin{theorem} \label{thm:1.4}
+	A class $\mathcal{F}$ that is both a $\pi$-system and a $\lambda$-system, is a $\sigma$-field.
+\end{theorem}
+
+\begin{proof}
+	We only need to show that $\mathcal{F}$ is closed under countable unions. Let $B_i \in \mathcal{F}$. Break the $B_i$ into disjoint sets in the usual way:
+	\[
+		A_1 = B_1, \dots, A_n = B_n \cap \left( \bigcup_{i<n} B_i \right)^c.
+	\]
+	Then $A_i$ are disjoint and $\bigcup_i A_i = \bigcup_i B_i$. Since $B_i \in \mathcal{F}$, we have $B_i^c \in \mathcal{F}$ by ($\lambda$2).
+
+	Because $\mathcal{F}$ is a $\pi$-system, we have $A_n = B_n \cap (B_1^c \cdots B_{n-1}^c) \in \mathcal{F}$. So by ($\lambda$3), $\bigcup_i A_i \in \mathcal{F}$. Hence $\mathcal{F}$ is a $\sigma$-field.
+\end{proof}
+
+\section{Lecture 6, September 4}
+
+\begin{theorem} \label{thm:dynkin}
+	If $\mathcal{P}$ is a $\pi$-system, $\mathcal{L}$ is a $\lambda$-system, and $\mathcal{P} \subset \mathcal{L}$, then $\sigma(\mathcal{P}) \subset \mathcal{L}$.
+\end{theorem}
+
+\begin{proof}
+	Let $\mathcal{L}_0$ be the smallest $\lambda$-system containing $\mathcal{P}$. As $\mathcal{L}_0 \subset \mathcal{L}$, by Theorem~\ref{thm:extension} it is enough to show that $\mathcal{L}_0$ is a $\pi$-system. For any fixed $A \subset \Omega$ (where $A$ is not necessarily in $\mathcal{L}_0$), define
+	\[
+		\mathcal{L}_A = \{B \in \mathcal{L}_0:\;AB \in \mathcal{L}_0\}.
+	\]
+	Note that the intersection of $\lambda$-systems is itself a $\lambda$-system. In the context of collections of sets, ``intersection'' means sets that are common to both.
+
+	\vspace{10pt}
+	\textbf{Part 1}. First we will show that if $A \in \mathcal{L}_0$, then $\mathcal{L}_A$ is a $\lambda$-system.
+	
+	\begin{enumerate}
+		\item If $A \in \mathcal{L}_0$, then $A \cap \Omega \in \mathcal{L}_0$. So $\Omega \in \mathcal{L}_A$, verifying property ($\lambda$1).
+		\item If $A \in \mathcal{L}_0$, then $A^c \in \mathcal{L}_0$. Furthermore, if $B \in \mathcal{L}_A$, then $B \in \mathcal{L}_0$. Now consider the sets $AB$ and $A^c$. These are disjoint, and each is in $\mathcal{L}_0$. As a result, $(AB \cup A^c)^c \in \mathcal{L}_0$, and $(AB \cup A^c)^c = A \cap (AB)^c = B^cA \in \mathcal{L}_0$. We know that $B^c \in \mathcal{L}_0$, and so this implies that $B^c \in \mathcal{L}_A$. Therefore $\mathcal{L}_A$ is closed under complementation, verifying property ($\lambda$2).
+		\item If $A \in \mathcal{L}_0$ and $B_n \in \mathcal{L}_0$ are disjoint, then $AB_n \in \mathcal{L}_0$ and are disjoint. So $\bigcup_n B_n \in \mathcal{L}_0$ and $A \cap \bigcup_n B_n \in \mathcal{L}_0$. This implies that $\bigcup_n B_n \in \mathcal{L}_A$, verifying property ($\lambda$3).
+	\end{enumerate}
+
+	Thus if $A \in \mathcal{L}_0$, then $\mathcal{L}_A$ is a $\lambda$-system.
+
+	\vspace{10pt}
+	\textbf{Part 2}. We will now show that $\mathcal{L}_0$ is a $\pi$-system. There are three possibilities here:
+
+	\begin{enumerate}
+		\item $A \in \mathcal{P}$, $B \in \mathcal{P}$
+		\item $A \in \mathcal{P}$, $B \in \mathcal{L}_0$
+		\item $A \in \mathcal{L}_0$, $B \in \mathcal{L}_0$.
+	\end{enumerate}
+
+	We must show that in each case, $A \cap B \in \mathcal{L}_0$.
+
+	First, fix $A \in \mathcal{P}$. Then $B \in \mathcal{P}$ implies $AB \in \mathcal{P} \subset \mathcal{L}_0$. So $B \in \mathcal{L}_A$ and hence $\mathcal{P} \subset \mathcal{L}_A$. Now, we showed in Part 1 above that $\mathcal{L}_A$ is a $\lambda$-system since $A \in \mathcal{L}_0$. To this point we have showed that $A \in \mathcal{P}$ implies $\mathcal{L}_0 \subset \mathcal{L}_A$. Since we already knew that $\mathcal{L}_A \subset \mathcal{L}_0$, this actually means $A \in \mathcal{P} \implies \mathcal{L}_A = \mathcal{L}_0$.
+
+	From the definition of $\mathcal{L}_A$, if $A \in \mathcal{P}$ and $B \in \mathcal{L}_0$, then $AB \in \mathcal{L}_0$. This is exactly what we needed for case 2.
+
+	Now fix $B \in \mathcal{L}_0$. If $A \in \mathcal{P}$, then $AB \in \mathcal{L}_0$. This is simply a restatement of the above conclusion. This implies that $A \in \mathcal{L}_B = \{C \in \mathcal{L}_0:\;CB \in \mathcal{L}_0\}$. So $\mathcal{P} \subset \mathcal{L}_B$, which immediately implies $\mathcal{L}_0 \subset \mathcal{L}_B$ whenever $B \in \mathcal{L}_0$. Hence $\mathcal{L}_0 = \mathcal{L}_B$ for all $B \in \mathcal{L}_0$.
+
+	The conclusion is if $A \in \mathcal{L}_0$ and $B \in \mathcal{L}_0$, then $AB \in \mathcal{L}_0$, which is case 3 above.
+
+	\vspace{10pt}
+	So $\mathcal{L}_0$ is a $\pi$-system and a $\lambda$-system, and thus by Theorem~\ref{thm:1.4} it is a $\sigma$-field. Also it contains $\mathcal{P}$, so $\mathcal{P} \subset \mathcal{L}_0 \subset \mathcal{L}$.
+\end{proof}
+
+\begin{theorem}[Uniqueness Theorem] \label{thm:uniqueness}
+	Suppose $P_1$ and $P_2$ are probability measures on $\sigma(\mathcal{P})$, where $\mathcal{P}$ is a $\pi$-system. If $P_1$ and $P_2$ agree on $\mathcal{P}$, then they agree on $\sigma(\mathcal{P})$.
+\end{theorem}
+
+\begin{proof}
+	Let $\mathcal{L} = \{A \in \sigma(\mathcal{P}):\;P_1(A) = P_2(A)\}$. This $\mathcal{L}$ is a $\lambda$-system (conditions are straightforward to verify), and it contains the $\pi$-system $\mathcal{P}$. By Theorem~\ref{thm:dynkin}, $\sigma(\mathcal{P}) \subset \mathcal{L}$ as required.
+\end{proof}
+
+\begin{definition}[Support] \label{def:support}
+	$S \in \mathcal{F}$ is called a \emph{support} of $P$ if $P(S)=1$.
+\end{definition}
+
+\begin{definition}[Null-set] \label{def:null-set}
+	A set with probability measure zero is called a \emph{null-set}.
+\end{definition}
+
+\begin{definition}[Completeness] \label{def:completeness}
+	A probability measure space $(\Omega,\mathcal{F}_0,P_0)$ is \emph{complete} if
+	\[
+		A \subset B, \; B \in \mathcal{F}_0, \textrm{ and } P_0(B) = 0 \implies A \in \mathcal{F}_0.
+	\]
+	That is, if there is a null-set in $\mathcal{F}_0$, all its subsets are also in $\mathcal{F}_0$.
+\end{definition}
+
+The Borel $\sigma$-field $\mathcal{B}$ is \emph{not} complete. There exist uncountable subsets which are still measure zero. Cantor sets, on the other hand, are complete.
+
+\section{Lecture 7, September 9}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
+\section*{Books}
+\addcontentsline{toc}{section}{Books}
+\printbibliography[heading=bibempty,type=book]
+\section*{Articles}
+\addcontentsline{toc}{section}{Articles}
+\printbibliography[heading=bibempty,type=article]
+
+%----------------------------------------------------------------------------------------
+%	INDEX
+%----------------------------------------------------------------------------------------
+
+\cleardoublepage
+\phantomsection
+\setlength{\columnsep}{0.75cm}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
+\printindex
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
