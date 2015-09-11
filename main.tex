@@ -468,7 +468,7 @@ Next we will establish the remaining two facts from Theorem~\ref{thm:1.3}.
 \begin{example}[Exercise 3.3(a)]
 	Consider the following scenario: Let $\Omega = \{1,2,3\}$. The power set of $\Omega$ is $2^\Omega = \{\varnothing,\Omega,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}$. Now let $P_1(\{2,3\}) = 1$, $P_1(\{1\})=0$, and $P_2(\{2,3\})=0$, $P_2(\{1\})=1$ be two probability measures on the field $\mathcal{F}_0 = \{\varnothing,\Omega,\{1\},\{2,3\}\}$.
 
-	First we will establish $\mathcal{F_0} \subset \mathcal{M}(P_1^*)$.
+	First we will establish $\mathcal{F}_0 \subset \mathcal{M}(P_1^*)$.
 	If $A = \{2\}$, then $P_1^*(A\Omega) = P_1^*(A) = P_1^*(\{2,3\}) = 1$ and $P_1^*(A^c\Omega) = P_1^*(A^c) = P_1^*(\{1,3\}) = 1$. But $P_1^*(\Omega) = 1$, and $1+1 > 1$. This means that $\{2\} \notin \mathcal{M}(P_1^*)$ and $\{1,3\} \notin \mathcal{M}(P_1^*)$. Similarly, we can check that $\{3\}, \{1,2\} \notin \mathcal{M}(P_1^*)$. The only sets left from $2^\Omega$ are the ones that make up $\mathcal{F}_0$, so $\mathcal{F}_0 = \mathcal{M}(P_1^*)$.
 
 	Now we focus on $P_2^*$. For a particular $A$ and any $E$, property (III) of Definition~\ref{def:outer-measure} guarantees that $P_2^*(AE) \leq P_2^*(A)$ because $A \cap E \subseteq A$. Suppose $1 \notin A$. If this is the case, then $P_2^*(A) = 0$ (since the only two possibilities for $A$ in $\mathcal{F}$ are $\varnothing$ and $\{2,3\}$, and $P_2^*$ is zero on each of these). This establishes that $P_2^*(AE) = 0$. It is also true that $P_2^*(A^cE) \leq P_2^*(E)$, also by property (III) of Definition~\ref{def:outer-measure}. Putting these together,
@@ -636,6 +636,109 @@ We need disjointness to prove uniqueness.
 The Borel $\sigma$-field $\mathcal{B}$ is \emph{not} complete. There exist uncountable subsets which are still measure zero. Cantor sets, on the other hand, are complete.
 
 \section{Lecture 7, September 9}
+
+It is always possible to complete a probability space.
+
+\begin{theorem} \label{thm:complete-extension}
+	For every probability space, there exists a unique minimal complete extension.
+\end{theorem}
+
+\begin{proof}
+	For any probability space $(\Omega,\mathcal{F},P)$, define the outer measure $P^*$ using $\mathcal{F}_0$ such that $\mathcal{F} = \sigma(\mathcal{F})$. Then $P^*$ restricted to $\mathcal{M}(P^*)$ is a probability measure: If $P^*(B) = 0$ and $A \subset B$, then $P^*(A)=0$ and $P^*(A \cap E) + P^*(A^c \cap E) \leq P^*(B) + P^*(E) = P^*(E)$, and so $A \in \mathcal{M}(P^*)$.
+
+	Therefore $(\Omega,\mathcal{M}(P^*),P^*)$ is a complete probability space.
+\end{proof}
+
+The Borel $\sigma$-field on $(0,1]$, $\mathcal{B}$, together with the Lebesgue measure $\lambda$, can be completed this way. The sets in $\mathcal{M}(\lambda^*)$ are called \emph{Lebesgue sets}. $\lambda^*$ is still called \emph{Lebesgue measure}, and is often denoted simply by $\lambda$. On $\Omega = (0,1]$,
+
+\[
+	\mathcal{I} \subset \mathcal{B}_0 \subset \mathcal{B} \subset \mathcal{M}(\lambda^*).
+\]
+
+In terms of the classification of the above, this is ($\pi$-system) $\subset$ (field) $\subset$ ($\sigma$-field) $\subset$ (complete Lebesgue $\sigma$-field).
+
+For any probability space $(\Omega,\mathcal{F},P)$, define
+\[
+	\mathcal{F}^+ = \{A:\;A \triangle B \subset C \textrm{ for some } B,C \in \mathcal{F} \textrm{ satisfying } P(C)=0\}.
+\]
+\begin{remark}\label{rem:sym-diff}
+	We use $\triangle$ as the \emph{symmetric difference} operator.
+	\[
+		A \triangle B = (A \cap B^c) \cup (A^c \cap B).
+	\]
+	Notice that $A^c \triangle B^c = A \triangle B$.
+\end{remark}
+
+Notice that $A \in \mathcal{F}^+$ implies $A^c \in \mathcal{F}^+$, since $A^c \triangle B^c = A \triangle B \subset C$. If $A \in \mathcal{F}$, then taking $B=A$ and $C=\varnothing$ shows that $\mathcal{F} \subset \mathcal{F}^+$. Finally, $\mathcal{F}^+$ is closed under countable unions: For $A_i \in \mathcal{F}^+$, we can get $B_i,C_i \in \mathcal{F}$ such that $A_i \triangle B_i \subset C_i$.
+\begin{align*}
+	\left( \bigcup_{i=1}^\infty A_i \right) \cap \left( \bigcup_{j=1}^\infty B_j \right)^c &\subset \bigcup_{i=1}^\infty (A_i \cap B_i^c) \\
+	\left( \bigcup_{i=1}^\infty B_i \right) \cap \left( \bigcup_{j=1}^\infty A_j \right)^c &\subset \bigcup_{i=1}^\infty (B_i \cap A_i^c) \\
+	\left( \bigcup_{i=1}^\infty A_i \right) \triangle \left( \bigcup_{j=1}^\infty B_j \right) &\subset \bigcup_{i=1}^\infty (A_i \triangle B_i) \subset \bigcup_{i=1}^\infty C_i.
+\end{align*}
+So $\mathcal{F}^+$ is a $\sigma$-field on $\Omega$ and $\mathcal{F} \subset \mathcal{F}^+$.
+
+We want to extend $P$ from $\mathcal{F}$ onto $\mathcal{F}^+$. For $A \in \mathcal{F}^+$, there exist some $B,C \in \mathcal{F}$ satisfying $P(C)=0$ and $A \triangle B \subset C$. This is directly from the definition of $\mathcal{F}^+$. If we have another two sets $D$ and $E$ from $\mathcal{F}$ that satisfy $A \triangle D \subset E$ and $P(E)=0$, then $B \triangle D \subset C \cup E$, and hence $P(B)=P(D)$. Define $P^+(A)=P(B)$. This $P^+$ is an unambiguous probability measure on $\mathcal{F}^+$.
+
+This completes the derivation of $(\Omega,\mathcal{F}^+,P^+)$, the minimal complete extension of $(\Omega,\mathcal{F},P)$.
+
+\vspace{10pt}
+We now turn our attention to $\lambda$, the Lebesgue measure on the Borel $\sigma$-field $\mathcal{B}$. Define the $\oplus$ operator as follows:
+\[
+	x \oplus y = \begin{cases}
+		x+y & \textrm{if } x + y \in (0,1] \\
+		x+y-1 & \textrm{otherwise}.
+	\end{cases}
+\]
+The $\oplus$ operator is also defined with respect to a set and a scalar. $A \oplus x = \{a \oplus x:\;a \in A\}$. Now consider the set
+\[
+	\mathcal{L} = \{A \in \mathcal{B}:\;A \oplus x \in \mathcal{B} \textrm{ and } \lambda(A \oplus x) = \lambda(A)\}.
+\]
+Since $(A \oplus x)^c = A^c \oplus x$, $\mathcal{L}$ is a $\lambda$-system containing $\mathcal{I}$. By Theorem~\ref{thm:dynkin}, $\mathcal{L}=\mathcal{B}$. Shifting all sets by $x$ did not their measure. In this sense, $\lambda$ is \emph{translation invariant} on $\mathcal{B}$. In fact, we can go even further.
+
+\begin{theorem} \label{thm:trans-invar}
+	Lebesgue measure $\lambda^*$ is translation invariant on all subsets of $\Omega$.
+\end{theorem}
+
+\begin{proof}
+	Let $\mathcal{B}_0$ be the Borel field generated by $\mathcal{I}$. As we have just seen, for $A \in \mathcal{B}_0$, $A \oplus x \in \mathcal{B}_0$ and $\lambda(A \oplus x) = \lambda(A)$. If $B \subset \bigcup_{i=1}^\infty A_i$ for $A_i \in \mathcal{B}_0$, then $B \oplus x \subset \bigcup_{i=1}^\infty (A_i \oplus x)$. Hence
+	\[
+		\lambda^*(B \oplus x) \leq \sum_{i=1}^\infty \lambda(A_i \oplus x) = \sum_{i=1}^\infty \lambda(A_i),
+	\]
+	which implies that $\lambda^*(B \oplus x) \leq \lambda^*(B)$. As $B = (B \oplus x) \oplus (1-x)$, it follows that $\lambda^*(B) \leq \lambda^*(B \oplus x)$. So in fact $\lambda^*(B) = \lambda^*(B \oplus x)$. Thus $\lambda^*$ is translation invariant on all subsets of $\Omega$.
+\end{proof}
+
+Just because $\lambda^*$ is translation invariant on all subsets of $\Omega$ does not mean that it is a probability measure on all subsets of $\Omega$. It is only a probability measure on sets belonging to a certain class, appropriately named \emph{Lebesgue-measurable sets}.
+
+\begin{definition}[Lebesgue-measurable] \label{def:lebesgue-measurable}
+	The sets in $\mathcal{M}=\mathcal{M}(\lambda^*)$ are called \emph{Lebesgue-measurable sets}. $\lambda^*$ (called \emph{Lebesgue measure}) is a probability measure on $\mathcal{M}$.
+\end{definition}
+
+It can be proven that $\lambda^*$ is translation-invariant on $\mathcal{M}$ as follows. If $A \in \mathcal{M}$, then $\lambda^*(AE) + \lambda^*(A^cE) \leq \lambda^*(E)$ for all $E \subset \Omega$ because $\lambda^*$ is an outer measure. For any $B \subset \Omega$,
+\[
+	(B \oplus x) \cap E = (B \oplus x) \cap ((E \oplus (1-x)) \oplus x) = (B \cap (E \oplus (1-x)) \oplus x).
+\]
+It follows that
+\[
+	\lambda^*((B \oplus x) \cap E) = \lambda^*(B \cap (E \oplus (1-x)) \oplus x) = \lambda^*(B \cap (E \oplus (1-x))).
+\]
+So
+\[
+	\lambda^*((A \oplus x) \cap E) + \lambda^*((A \oplus x)^c \cap E) \leq \lambda^*(E \oplus (1-x)) = \lambda^*(E).
+\]
+Hence $A \oplus x \in \mathcal{M}$. This establishes that the Lebesgue measure on $\mathcal{M}$ is \emph{translation invariant}.
+
+\vspace{10pt}
+Define the relation $\sim$ such that $x \sim y$ if $x \oplus r = y$ for some rational $r \in (0,1]$. This relation partitions $\Omega$ into equivalence classes $\{A_\theta:\;\theta \in \Theta\}$. Construct a set $H$ consisting of exactly one point from each class $A_\theta$. Further define $Q$ to be the set of rationals in $\Omega$ and $H_r = H \oplus r$.
+
+Then $\bigcup_{r \in Q} H_r = \Omega$, and $H_r \cap H_s = \varnothing$ for $r \neq s \in Q$. That is, the $H$'s are disjoint. To see this, consider a particular $x \in \Omega$. Because $\bigcup_\theta A_\theta = \Omega$, there is some $\theta$ such that $x \in A_\theta$. Choose the $y$ from that same $A_\theta$ where $y \in H$. Now suppose $x \in H_r \cap H_s$. Then $x = y+r$, $y \in H$, and $x = y'+s$, $y' \in H$. This is a contradiction, since we built $H$ by taking exactly one element from each $A_\theta$. Thus $H_r \cap H_s = \varnothing$.
+
+Now if $P$ is a translation invariant probability measure on all subsets of $\Omega$, then
+\[
+	1 = P(\bigcup_{r \in Q} H_r) = \sum_{r \in Q} P(H_r) = \infty \cdot P(H_{(1/2)})
+\]
+since this is a countably infinite sum. Clearly we have reached a contradiction. Therefore, \emph{there is no translation-invariant probability measure on $2^{(0,1]}$ (all subsets of $(0,1]$)}. This also implies that $\mathcal{M}(\lambda^*) \neq 2^{(0,1]}$, that is, there exists some set that is not Lebesgue-measurable.
+
+\section{Lecture 8, September 11}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
