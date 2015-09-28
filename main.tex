@@ -740,6 +740,458 @@ since this is a countably infinite sum. Clearly we have reached a contradiction.
 
 \section{Lecture 8, September 11}
 
+\begin{definition}[Monotone class] \index{Monotone class} \label{def:monotone-class}
+	A class $\mathcal{M}$ of subsets of $\Omega$ is called a \emph{monotone class} if it is closed under countable monotone limits. That is,
+	\begin{enumerate}[label=(\roman*)]
+		\item $A_1,A_2,\dots \in \mathcal{M}$ and $A_n \uparrow A$ imply $A \in \mathcal{M}$ and
+		\item $A_1,A_2,\dots \in \mathcal{M}$ and $A_n \downarrow A$ imply $A \in \mathcal{M}$.
+	\end{enumerate}
+\end{definition}
+
+Notice that a class containing only one set is automatically monotone. For example, $\mathcal{M} = \{\varnothing\}$ satisfies the conditions in Definition~\ref{def:monotone-class}.
+
+\begin{theorem} \label{thm:monotone-class}
+	If $\mathcal{F}$ is a field and $\mathcal{M}$ is a monotone class, then $\mathcal{F} \subset \mathcal{M}$ implies $\sigma(\mathcal{F}) \subset \mathcal{M}$.
+\end{theorem}
+
+\begin{proof}
+	First we will show that a class $\mathcal{M}$ that is both monotone and a field is a $\sigma$-field. Take $c_1,c_2,\dots \in \mathcal{M}$. Then $A_n = \bigcup_{i=1}^n c_i \in \mathcal{M}$ (fields contain finite unions). But $A_n \uparrow \bigcup_{i=1}^\infty c_i \in \mathcal{M}$ because $\mathcal{M}$ is closed under countable monotone limits. Thus $\mathcal{M}$ is a $\sigma$-field.
+
+	Now let $\mathcal{M}_0$ be the smallest monotone class containing $\mathcal{F}$. Then $\mathcal{F} \subset \mathcal{M}_0 \subset \mathcal{M}$. Thus it is enough to show that $\mathcal{M}_0$ is a field.
+
+	Define
+	\[
+		\mathcal{M}_A = \{B \in \mathcal{M}_0:\; A \cap B,\; A \cap B^c \textrm{ and } A^c \cap B \in \mathcal{M}_0\}.
+	\]
+	Obviously $\mathcal{M}_A \subset \mathcal{M}_0$. Fix $A \in \mathcal{F}$. We want to show that $\mathcal{M}_A$ is a monotone class. To do that, let $B_n \in \mathcal{M}_A$ such that $B_n \uparrow B$. From the definition of $\mathcal{M}_A$ we know that
+	\[
+		\left.
+		\begin{array}{r}
+			A \cap B_n \\
+			A \cap B_n^c \\
+			A^c \cap B_n \\
+			B_n
+		\end{array}
+		\right\} \in \mathcal{M}_0.
+	\]
+
+	Taking increasing limits, $B_n \uparrow B \in \mathcal{M}_0$, $A \cap B_n \uparrow A \cap B \in \mathcal{M}_0$, $A^c \cap B_n \uparrow A^c \cap B \in \mathcal{M}_0$, and $A \cap B_n^c \downarrow A \cap B^c \in \mathcal{M}_0$. All this means that $B \in \mathcal{M}_A$. So $\mathcal{M}_A$ is indeed monotone. In fact, this is true for any $A$, not just those in $\mathcal{F}$. (The above argument can be modified slightly to show that if $C_n \in \mathcal{M}_A$ and $C_n \downarrow C$, then $C \in \mathcal{M}_A$.)
+
+	The next step is to show that if $A \in \mathcal{F}$, then $\mathcal{F} \subset \mathcal{M}_A$. Take $A,B \in \mathcal{F}$. Then by definition of $\mathcal{M}_A$, $B \in \mathcal{M}_A$. Hence $\mathcal{M}_0 \subset \mathcal{M}_A$ because $\mathcal{M}_0$ is minimal. However, we already saw that $\mathcal{M}_A \subset \mathcal{M}_0$. Therefore $\mathcal{M}_0 = \mathcal{M}_A$.
+
+	So, for $B \in \mathcal{M}_0$ and $A \in \mathcal{F}$, we know that $A \cap B$, $A \cap B^c$, and $A^c \cap B \in \mathcal{M}_0$. Again, $\mathcal{F} \subset \mathcal{M}_B$ and by minimality $\mathcal{M}_0 = \mathcal{M}_B$.
+
+	Finally, if $A,B \in \mathcal{M}_0 = \mathcal{M}_A$, then $A \cap B$, $A \cap B^c$, and $A^c \cap B \in \mathcal{M}_0$. So $\mathcal{M}_0$ is a field.
+\end{proof}
+
+\begin{example} \label{ex:1.7}
+	The above theorem requires that $\mathcal{M}$ contain a field $\mathcal{F}$. It does not hold if this requirement is relaxed to, say, $\mathcal{M}$ containing a $\pi$-system. As a counterexample, consider $\mathcal{P} = \mathcal{M} = \{\varnothing\}$, where $\Omega \neq \varnothing$. Clearly $\mathcal{P}$ is a $\pi$-system, and $\mathcal{M}$ contains a single element so it is a monotone class. However, $\sigma(\mathcal{P}) = \{\varnothing, \Omega\} \not\subset \mathcal{M}$.
+\end{example}
+
+\chapter{}
+
+\section{Lecture 9, September 14}
+
+\begin{definition}[Lim inf and lim sup] \label{def:limit-sets}
+	\begin{align*}
+		\liminf_n A_n &= \bigcup_{n=1}^\infty \bigcap_{k=n}^\infty A_k \\
+		\limsup_n A_n &= \bigcap_{n=1}^\infty \bigcup_{k=n}^\infty A_k.
+	\end{align*}
+\end{definition}
+
+Suppose we have a probability space $(\Omega,\mathcal{F},P)$ such that $A_n \in \mathcal{F}$. Then $\liminf_n A_n, \limsup_n A_n \in \mathcal{F}$. So it makes sense to think about $P(\liminf_n A_n)$ and $P(\limsup_n A_n)$. In fact, we will often use the following theorem about these values.
+
+\begin{theorem} \label{thm:2.1}
+	For any $A_n$,
+	\[
+		P\left(\liminf_n A_n\right) \leq \liminf_n P(A_n) \leq \limsup_n P(A_n) \leq P\left(\limsup_n A_n\right).
+	\]
+\end{theorem}
+
+Note that $A_n \subset \bigcup_{k \geq n} A_k$. So $P(A_n) \leq P \left( \bigcup_{k \geq n} A_k \right) \downarrow P \left( \limsup_n A_n \right)$.
+
+It is possible for the inequalities in Theorem~\ref{thm:2.1} to all be strict, as in the following example.
+
+\begin{example} \label{ex:strict-ineq-liminf-limsup}
+	Define a sequence of sets $A_n$ such that $A_{2n+1} = (0,1/3]$ and $A_{2n} = (1/3,1]$. In this situation we have
+	\begin{align*}
+		P \left( \liminf_n A_n \right) &= 0, \\
+		\liminf_n P(A_n) &= \frac{1}{3}, \\
+		\limsup_n P(A_n) &= \frac{2}{3}, \textrm{ and} \\
+		P \left( \limsup_n A_n \right) &= 1.
+	\end{align*}
+	Clearly
+	\[
+		P\left(\liminf_n A_n\right) < \liminf_n P(A_n) < \limsup_n P(A_n) < P\left(\limsup_n A_n\right).
+	\]
+\end{example}
+
+\begin{definition}[Independent events] \label{def:independent-events}
+	Two events $A$ and $B$ are \emph{independent} if $P(AB) = P(A)P(B)$.
+
+	Three events $A$, $B$, and $C$ are independent if all three are pairwise independent with each other, \emph{and} $P(ABC)=P(A)P(B)P(C)$.
+
+	In general, $A_1,\dots,A_n$ are independent if
+	\[
+		P \left( A_{k_1} \cap \cdots \cap A_{k_j} \right) = P \left( A_{k_1} \right) \cdots P \left( A_{k_j} \right)
+	\]
+	for $2 \leq j \leq n$ and $1 \leq k_1 < \cdots < k_j \leq n$.
+\end{definition}
+
+\begin{example} \label{ex:not-independent}
+	Suppose $\Omega = \{1,2,3,4,5,6,7,8\}$, and $P(\{i\}) = \frac{1}{8}$. Define the events
+	\[
+		A = \{1,2,3,4\}, \qquad B = \{1,2,5,6\}, \qquad C = \{1,2,7,8\}.
+	\]
+	It is easy to check that any two of $A$, $B$, and $C$ are independent. However, $P(ABC) = \frac{1}{4}$ but $P(A)P(B)P(C) = \frac{1}{8}$.
+
+	Now suppose we define
+	\[
+		A = \{1,2,3,4\}, \qquad D = \{4,5,6,7\}, \qquad E = \{4,5,6,7\}.
+	\]
+	Here $P(ADE) = P(A)P(D)P(E) = \frac{1}{8}$, but no two of $A$, $D$, and $E$ are independent. In each of these scenarios, the three events are not independent.
+\end{example}
+
+Notice that technically, independence is not a property of the events themselves, but rather of the probability measure $P$.
+
+If we have two events $A,B$ that are independent, what can we say about $A^c$ and $B$?
+\begin{align*}
+	P(A^c \cap B) &= P(B) - P(A \cap B) \\
+	&= P(B) - P(A)P(B) \\
+	&= P(B)[1-P(A)] \\
+	&= P(B)P(A^c).
+\end{align*}
+$A^c$ and $B$ are also independent.
+
+\begin{definition}[Independent classes] \label{def:independent-classes}
+	The classes $\mathcal{F}_1,\dots,\mathcal{F}_n$ are independent if for every possible choice of $A_i \in \mathcal{F}_i$, $A_1,\dots,A_n$ are independent.
+
+	An infinite collection of classes $\{\mathcal{F}_\theta:\;\theta \in \Theta\}$ is independent if each finite subcollection $\mathcal{F}_{\theta_1}, \dots, \mathcal{F}_{\theta_n}$ of classes is independent.
+\end{definition}
+
+\begin{theorem} \label{thm:independent-pi-system}
+	$ $
+	\begin{itemize}
+		\item If $\mathcal{F}_1,\dots,\mathcal{F}_n$ are independent and each $\mathcal{F}_i$ is a $\pi$-system, then $\sigma(\mathcal{F}_1),\dots,\sigma(\mathcal{F}_n)$ are independent.
+		\item If the classes $\{\mathcal{F}_\theta:\;\theta \in \Theta\}$ are independent and each $\mathcal{F}_\theta$ is a $\pi$-system, then $\{\mathcal{F}_\theta:\;\theta \in \Theta\}$ are independent.
+	\end{itemize}
+\end{theorem}
+
+\begin{proof}
+	Fix $A_2 \in \mathcal{F}_2, \dots, A_n \in \mathcal{F}_n$. Let
+	\[
+		\mathcal{G} = \{B \in \sigma(\mathcal{F}_1):\;P(B B_2 \cdots B_n) = P(B)P(B_2) \cdots P(B_n),\;B_i=A_i \textrm{ or } \Omega\}.
+	\]
+	Clearly $\mathcal{F}_1 \in \mathcal{G}$. Now check that $\mathcal{G}$ is a $\lambda$-system. Recall that this means we need to check
+	\begin{itemize}
+		\item $\Omega \in \mathcal{G}$
+		\item $C \in \mathcal{G}$ implies $C^c \in \mathcal{G}$
+		\item For disjoint $C_i \in \mathcal{G}$, $\bigcup_i^\infty C_i \in \mathcal{G}$.
+	\end{itemize}
+	The first is trivial. For the second, fix some $C \in \mathcal{G}$. That means that $P(C \cap B_2 \cap \cdots \cap B_n) = P(C)P(B_2) \cdots P(B_n)$. We are trying to determine if $P(C^c \cap B_2 \cap \cdots \cap B_n) = P(C^c)P(B_2) \cdots P(B_n)$. Taking the probability of the union of the two left hand sides,
+	\begin{align*}
+		P \left( (C \cap B_2 \cap \cdots \cap B_n) \cup (C^c \cap B_2 \cap \cdots \cap B_n) \right) &= P \left( \Omega \cap B_2 \cap \cdots \cap B_n \right) \\
+		&= P(B_2 \cap \cdots \cap B_n).
+	\end{align*}
+	Adding the two right hand sides gives
+	\begin{align*}
+		P(C)P(B_2) \cdots P(B_n) + P(C^c)P(B_2) \cdots P(B_n) &= P(\Omega)P(B_2) \cdots P(B_n) \\
+		&= P(B_2) \cdots P(B_n).
+	\end{align*}
+	Since the $B$s are independent it is indeed true that $P(B_2 \cap \cdots \cap B_n) = P(B_2) \cdots P(B_n)$. So $C^c \in \mathcal{G}$.
+
+	For the third property,
+	\begin{align*}
+		P \left( \bigcup_i^\infty C_i \cap B_2 \cap \cdots \cap B_n \right) &= \sum_{i=1}^\infty P(C_1 \cap B_2 \cap \cdots \cap B_n) \tag{$C_i$ disjoint} \\
+		&= \left( \sum_{i=1}^\infty P(C_i) \right) P(B_2) \cdots P(B_n) \\
+		&= P \left( \bigcup_i^\infty C_i \right) P(B_2) \cdots P(B_n). \tag{$C_i$ disjoint}
+	\end{align*}
+	So $\bigcup_i^\infty C_i \in \mathcal{G}$, and thus $\mathcal{G}$ is a $\lambda$-system, containing the $\pi$-system $\mathcal{F}_1$. Therefore $\mathcal{G} \supset \sigma(\mathcal{F}_1)$.
+
+	Now we can fix $A_1 \in \sigma(\mathcal{F}_1)$, $A_3 \in \mathcal{F}_3, \dots, A_n \in \mathcal{F}_n$. Define
+	\[
+		\mathcal{G}_2 = \{B \in \sigma(\mathcal{F}_2):\;P(B B_2 \cdots B_n) = P(B)P(B_2) \cdots P(B_n);\;B_i=A_i \textrm{ or } \Omega\}.
+	\]
+	We can proceed in the exact same way to show that $\mathcal{G}_2 \supset \sigma(\mathcal{F}_2)$, etc. This method suffices to prove that $\sigma(\mathcal{F}_1), \sigma(\mathcal{F}_2), \dots, \sigma(\mathcal{F}_n)$ are independent.
+\end{proof}
+
+\begin{corollary}
+	Suppose that the array
+	\[
+	\begin{array}{ccc}
+		A_{11} & A_{12} & \cdots \\
+		A_{21} & A_{22} & \cdots \\
+		\vdots & \vdots & \ddots \\
+	\end{array}
+	\]
+	of events is independent. If $\mathcal{F}_i$ is the $\sigma$-field generated by the $i$th row, then $\mathcal{F}_1,\mathcal{F}_2,\dots$ are independent.
+\end{corollary}
+
+\begin{proof}
+	If $\mathcal{A}_i$ is the class of all finite intersections of elements of the $i$th row, then each $\mathcal{A}_i$ is a $\pi$-system, and by Theorem~\ref{thm:independent-pi-system}, $\mathcal{F}_i = \sigma(\mathcal{A}_i)$.
+\end{proof}
+
+Why is this useful? Say we want to generate a sequence of normal random variables. It turns out that this can be done with just a coin. When we flip a coin $n$ times we are generating the events $Z_1,\dots,Z_n$ where $P(Z_i=1) = P(Z_i=0) = \frac{1}{2}$. Define
+\[
+	Z_0 = \sum_{i=1}^\infty \frac{Z_i}{2^i}.
+\]
+Notice that $Z_0 \in [0,1]$ and $P(Z_0 = x) = x$ for $0 < x < 1$. That is, $Z_0$ is uniform on $(0,1)$. We can then generate infinitely many of these by arranging them into an array like the above, and they will all be independent.
+
+\begin{theorem}[Borel-Cantelli Lemmas] \label{thm:borel-cantelli}
+	Let $(\Omega,\mathcal{F},P)$ be a probability space, and let $A_i \in \mathcal{F}$.
+	\begin{enumerate}
+		\item If $\sum_n P(A_n)$ converges, then $P \left( \limsup_n A_n \right) = 0$.
+		\item If $\{A_n\}$ are independent and $\sum_n P(A_n)$ diverges, then $P \left( \limsup_n A_n \right) = 1$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Proof of 1:
+	\[
+		P \left( \limsup_n A_n \right) \leq P \left( \bigcup_{k=m}^\infty A_k \right) \leq \sum_{k=m}^\infty P(A_k) \xrightarrow[m \to \infty]{} 0.
+	\]
+	The above uses the countable subadditivity property of $P$.
+
+	Proof of 2: consider the complement. $(\limsup_n A_n)^c = (\bigcap_{n=1}^\infty \bigcup_{k=n}^\infty A_k)^c = \bigcup_{n=1}^\infty \bigcap_{k=n}^\infty A_k^c$.
+
+	\begin{align*}
+		P \left( \bigcap_{k=m}^\infty A_k^c \right) &\leq P \left( \bigcap_{k=m}^r A_k^c \right) \tag{nonnegativity} \\
+		&= \prod_{k=m}^r (1-P(A_k)) \tag{independence} \\
+		&\leq e^{-\sum_{k=m}^r P(A_k)}. \tag{because $1-x \leq e^{-x} \;\; \forall x$}
+	\end{align*}
+
+	As $\sum_n P(A_n)$ is a divergent series, $e^{-\sum_{k=m}^r P(A_k)} \to 0$ as $r \to \infty$. So $P(\bigcup_{m=1}^\infty \bigcap_{k=m}^\infty A_k^c) = 0$, and thus the complement $P(\limsup_n A_n) = 1$.
+\end{proof}
+
+The Borel-Cantelli Lemmas tell us that if we have infinitely many independent events, $P(\limsup_n A_n) = 0$ or 1 always, regardless of the choice of probability measure $P$.
+
+Is independence necessary for the lemmas to hold? The answer is yes, as the following example illustrates.
+
+\begin{example} \label{ex:2.1}
+	Consider the unit interval Lebesgue measure. Define $A = (0,1/3]$ and $B = (2/3,1]$. Let $A_{2n} = A$, $A_{2n+1} = B$. So $A_k$ is an infinite sequence of sets $A, B, A, B, \dots$.
+
+	Now each $P(A_n) = 1/3$, so $\sum P(A_n) = \infty$. However, $\limsup_n A_n = A \cup B$, and so $P(\limsup_n A_n) = 2/3$, not 0 or 1 as the Borel-Cantelli Lemmas guarantee for independent events.
+\end{example}
+
+\section{Lecture 10, September 16}
+
+There is a version of Borel-Cantelli that does work for dependent events, however.
+
+\begin{theorem}[Borel-Cantelli Lemma, dependent events] \label{thm:borel-cantelli-dependent}
+	Let
+	\[
+		\theta_n = \frac{\sum_{j=1}^m \sum_{k=1}^n P(A_jA_k)}{\left[ \sum_{k=1}^n P(A_k) \right]^2}.
+	\]
+	If $\liminf_n \theta_n \leq 1$ and $\sum_n P(A_n) = \infty$, then $P(\limsup_n A_n) = 1$.
+\end{theorem}
+
+\begin{proof}
+	Let $N_n \sum_{i=1}^n I_{A_j}$ and $m_n = \sum_{k \leq n} P(A_k)$. If $m_n > x$, then
+	\begin{align*}
+		P(N_n \leq x) &= P(|N_n - m_n| \geq m_n - x) \\
+		&\leq \textrm{Var}(N_n)/(m_n - x)^2 \tag{Chebyshev} \\
+		&= (\theta_n - 1)m_n^2/(m_n-x)^2. \tag{$N_n$ is binomial}
+	\end{align*}
+	So $\liminf_n P(N_n \leq x) = 0$. Since $P(\sup_k N_k < x) \leq P(N_n \leq x)$,
+	\[
+		P(\sup_k N_k < \infty) = P(\bigcup_{m=1}^\infty (\sup_k N_k < m)) = 0.
+	\]
+	Hence $P(\limsup_n A_n) = P(\sup_n N_n = \infty) = 1$.
+\end{proof}
+
+\begin{corollary}
+	If $\{A_n\}$ are pairwise independent, and $\sum_n P(A_n) = \infty$, then $P(\limsup_n A_n) = 1$.
+\end{corollary}
+
+We will now introduce the concept of a \emph{tail $\sigma$-field}.
+
+\begin{definition}[Tail $\sigma$-field] \label{def:tail-field}
+	$\mathcal{T} = \bigcap_{n=1}^\infty \sigma(A_n,A_{n+1},\dots)$ is called the \emph{tail $\sigma$-field} associated with $A_1,A_2,\dots$.
+\end{definition}
+
+To understand this conceptually, consider the sequence
+\[
+	\sigma(A_1,A_2,\dots) \supset \sigma(A_2,A_3,\dots) \supset \sigma(A_3,A_4,\dots).
+\]
+These are decreasing $\sigma$-fields, and $\mathcal{T}$ is the intersection of all of these. It is usually very small. For example, if $A_1=A_2=\cdots=A$, then $\mathcal{T} = \sigma(\{A\}) = (\varnothing, \Omega, A, A^c)$.
+
+\begin{theorem}[Zero-one law] \label{thm:zero-one}
+	If $A_1,A_2,\dots$ are independent, then $P(A)$ is either 0 or 1 for each $A \in \mathcal{T}$.
+\end{theorem}
+
+\begin{proof}
+	Clearly $\sigma(A_1,\dots,A_n)$ and $\sigma(A_{n+1},\dots)$ are independent for all $n$. $A \in \mathcal{T}$ implies that $A$ and $A_1,\dots,A_n$ are independent, so $A$ and $A_1,A_2,\dots$ are independent. Thus $A$ and $\mathcal{T}$ are independent, and hence $A$ and $A^c$ are independent. So
+	\[
+		0 = P(A \cap A^c) = P(A)P(A^c) \implies P(A) = 0 \textrm{ or } 1.
+	\]
+\end{proof}
+
+Suppose $A = \limsup_n A_n$. Is $A \in \mathcal{T}$?
+\begin{align*}
+	A = \bigcap_{m=1}^\infty \bigcup_{n=m}^\infty A_n &= \{\omega:\;\omega \in A_k \textrm{ for infinitely many } k=1,2,\dots\} \\
+	&= \{\omega:\;\omega \in A_k \textrm{ for infinitely many } k=2,3,\dots\} \\
+	&= \{\omega:\;\omega \in A_k \textrm{ for infinitely many } k=r,r+1,\dots \textrm{ for any } r\} \\
+	&\in \sigma(A_r,A_{r+1},\dots)
+\end{align*}
+and so $A \in \mathcal{T}$. Also,
+\[
+	A = \bigcap_{m=1}^\infty \bigcup_{n=m}^\infty A_n = \bigcap_{m=2}^\infty \bigcup_{n=m}^\infty A_n = \bigcap_{m=r}^\infty \bigcup_{n=m}^\infty A_n \in \sigma(A_r,A_{r+1},\dots).
+\]
+
+So $\liminf_n$ and $\limsup_n$ are both in the tail $\sigma$-field.
+
+Note that Borel-Cantelli can actually help tell you \emph{when} $P(A)$ is 0 or 1. The zero-one law just tells you that it must be one or the other.
+
+\begin{theorem}[Bernstein's Theorem] \label{thm:bernstein}
+	If $f$ is continuous, then $B_n(x) \to f(x)$ uniformly on $[0,1]$, where
+	\[
+		B_n(x) = \sum_{k=0}^n f(k/n) {n \choose k} x^k (1-x)^{n-k}
+	\]
+	are Bernstein polynomials.
+\end{theorem}
+
+\begin{proof}
+	Let $M = \sup_x |f(x)|$, and let $\delta(\epsilon) = \sup[|f(x)-f(y)|:\;|x-y| \leq \epsilon]$. This value is known as the \emph{modulus of continuity} of $f$. It will be shown that
+	\[
+		\sup_x |f(x) - B_n(x)| \leq \delta(\epsilon) + \frac{2M}{n\epsilon^2}.
+	\]
+	Because $f$ is uniformly continuous, $\lim_{\epsilon \to 0} \delta(\epsilon) = 0$, and so this inequality (provided we pick a sufficiently small $\epsilon$, say $\epsilon = n^{-1/3}$) will give the result in the theorem.
+
+	Fix $n \geq 1$ and $x \in [0,1]$ for the moment. Let $X_1,\dots,X_n$ be independent random variables (on some probability space) such that $P(X_i=1) = x$ and $P(X_i=0) = 1-x$. Define $S = X_1 + \cdots + X_n$. Since $S$ is just the sum of $n$ Bernoulli random variables, $P(S=k) = {n \choose k} x^k(1-x)^{n-k}$, and by the formula for calculating expected values of functions of random variables, $\textrm{E}[f(S/n)] = B_n(x)$. Additionally, $\textrm{E}[S/n] = x$, so by the law of large numbers, there should be a high probability that $S/n$ is near $x$, and hence (because $f$ is continuous) that $f(S/n) = f(x)$. Therefore, $\textrm{E}[f(S/n)]$ should be near $f(x)$. This is the probabilistic idea behind the definition of the Bernstein polynomial $B_n(x)$.
+
+	For some $\epsilon > 0$, consider the set $\{|S/n-x| < \epsilon\}$. This is the set of values of $x$ that are ``near'' (within $\epsilon$ of) $S/n$. On this set, $|f(S/n) - f(x)|$ is bounded by $\delta(\epsilon)$. On $\{|S/n-x| \geq \epsilon\}$, the complementary set, $|f(S/n) - f(x)|$ is bounded by $2M$. Now
+	\begin{align*}
+		|B_n(x) - f(x)| &= \big|\textrm{E}[f(S/n) - f(x)]\big| \\
+		&\leq \textrm{E}\big[|f(S/n) - f(x)|\big] \\
+		&\leq \delta(\epsilon) P \big[|S/n-x| < \epsilon\big] + 2MP \big[|S/n-x| \geq \epsilon\big] \\
+		&\leq \delta(\epsilon) + 2M \textrm{Var}[S]/n^2\epsilon^2. \tag{Chebyshev's Inequality}
+	\end{align*}
+	Since $\textrm{Var}[S] = nx(1-x) \leq n$, we indeed find that
+	\[
+		\sup_x |f(x) - B_n(x)| \leq \delta(\epsilon) + \frac{2M}{n\epsilon^2}.
+	\]
+\end{proof}
+
+\section{Lecture 11, September 18}
+
+We can't begin to define constructs like probability density functions without first developing the concept of an \emph{infinite measure}.
+
+\begin{definition}[General measure] \label{def:general-measure}
+	A set function $\mu$ on a field $\mathcal{F}$ on $\Omega$ is a \emph{measure} if it satisfies
+	\begin{enumerate}[label=(\Roman*)]
+		\item $0 \leq \mu(A) \leq \infty$ for $A \in \mathcal{F}$
+		\item $\mu(\varphi) = 0$
+		\item If $\{A_n\}$ is a sequence of disjoint sets in $\mathcal{F}$ and if $\bigcup_{n=1}^\infty A_n \in \mathcal{F}$, then
+		\[
+			\mu \left( \bigcup_{n=1}^\infty A_n \right) = \sum_{n=1}^\infty \mu(A_n).
+		\]
+	\end{enumerate}
+	Furthermore, $\mu$ is a \emph{finite measure} if $\mu(\Omega) < \infty$. On the other hand, $\mu$ is an \emph{infinite measure} if $\mu(\Omega) = \infty$.
+\end{definition}
+
+\begin{definition}[$\sigma$-finite measure] \label{def:sigma-finite-measure}
+	$\mu$ is a \emph{$\sigma$-finite measure} if $\Omega = A_1 \cup A_2 \cup \cdots$ for some finite or countable sequence of sets in $\mathcal{F}$ satisfying $\mu(A_k) < \infty$.
+\end{definition}
+
+A finite measure is by definition $\sigma$-finite, but a $\sigma$-finite measure may by finite or infinite. If $\mathcal{A}$ is a subclass of $\mathcal{F}$, then $\mu$ is \emph{$\sigma$-finite on $\mathcal{A}$} if $\Omega = \bigcup_k A_k$ for some finite or infinite sequence of sets in $\mathcal{A}$ satisfying $\mu(A_k) < \infty$. These sets need not necessarily be disjoint. It is important to understand that $\sigma$-finiteness is a joint property of the space $\Omega$, the measure $\mu$, and the class $\mathcal{A}$.
+
+Results about probability measures can be extended to finite measures simply by redefining
+\[
+	P(A) = \frac{\mu(A)}{\mu(\Omega)}.
+\]
+We can extend to $\sigma$-finite measures as well, since they are actually made up of finite intervals: $\Omega = \bigcup_k A_k$, $A_k \in \mathcal{F}$, and $\mu(A_i) < \infty$. For example, the real line can be written
+\[
+	\mathbb{R} = \bigcup_{n=1}^\infty (-n,n) = \bigcup_{m=-\infty}^\infty (m,m+1].
+\]
+
+\begin{example}[Counting measure] \label{ex:counting-measure}
+	Suppose $\Omega = \{1,2,3,\dots\}$ and $\mathcal{F}$ consists of all subsets of $\Omega$. Define $\mu(A)$ to be the number of points in $A$ if $A$ is a finite set, and $\infty$ otherwise. This $\mu$ is called the \emph{counting measure}, for obvious reasons.
+
+	We can write $\Omega = \bigcup_{n=1}^\infty \{n\}$, and $\mu(\{n\}) = 1 < \infty$ for all $n$. So $\mu$ is $\sigma$-finite.
+
+	Now suppose instead that $\Omega = \mathbb{R}$. In this case, $\mu(\textrm{any interval}) = \infty$. To write $\mathbb{R} = \Omega = \bigcup_i A_i$, at least one of the $A_i$ must be infinite. So $\mu$ is not $\sigma$-finite.
+\end{example}
+
+\begin{example} \label{ex:sigma-finite-measure-restricting}
+	The restriction of a $\sigma$-finite measure to a smaller $\sigma$-field may not necessarily be $\sigma$-finite itself. The counting measure is not $\sigma$-finite on $\{\varnothing, \Omega\}$ if $\Omega$ is a countably infinite set.
+\end{example}
+
+\begin{theorem} \label{thm:measure-properties}
+	Let $\mu$ be a measure on a field $\mathcal{F}$ and $A_n, A \in \mathcal{F}$.
+	\begin{enumerate}[label=(\Roman*)]
+		\item \emph{Continuity from below}: if $A_n \uparrow A$, then $\mu(A_n) \uparrow \mu(A)$.
+		\item \emph{Continuity from above}: if $A_n \downarrow A$, and $\mu(A_k) < \infty$ for some $k$, then $\mu(A_n) \downarrow \mu(A)$.
+		\item \emph{Countable subadditivity}:
+		\[
+			\mu \left( \bigcup_{n=1}^\infty A_n \right) \leq \sum_{n=1}^\infty \mu(A_n).
+		\]
+		\item If $\mu$ is $\sigma$-finite on $\mathcal{F}$, then $\mathcal{F}$ cannot contain an uncountable, disjoint collection of sets of positive $\mu$-measure.
+	\end{enumerate}
+\end{theorem}
+
+Notice the extra condition in (II). A simple example demonstrating why this is necessary is as follows. Suppose $\Omega = \{1,2,\dots\}$ and $\mathcal{F}$ consists of all subsets of $\Omega$. Define $\mu$ to be the counting measure as before. Now let $A_n = \{n,n+1,\dots\}$. Then $A_n \downarrow \varnothing$, and $\mu(\varnothing) = 0$, yet $\mu(A_n) = \infty$ for all $n$. So clearly $\mu(A_n)$ does not converge to $\mu(\varnothing)$.
+
+\section{Lecture 12, September 23}
+
+\begin{theorem} \label{thm:general-measure-agree}
+	Suppose that $\mu_1$ and $\mu_2$ are measures on $\sigma(\mathcal{P})$, where $\mathcal{P}$ is a $\pi$-system, and suppose they are are $\sigma$-finite on $\mathcal{P}$. If $\mu_1$ and $\mu_2$ agree on $\mathcal{P}$, then they agree on $\sigma(\mathcal{P})$.
+\end{theorem}
+
+\begin{proof}
+	Suppose $A \in \mathcal{P}$, and $0 < \mu_1(A) = \mu_2(A) < \infty$. Define the class
+	\[
+		\mathcal{G} = \{B \in \sigma(\mathcal{P}):\;\mu_1(A \cap B) = \mu_2(A \cap B)\}.
+	\]
+	Now $\mathcal{P} \subset \mathcal{G}$. And $B \in \mathcal{P}$ implies $A \cap B \in \mathcal{P}$, since $A \in \mathcal{P}$ and $\mathcal{P}$ is a $\pi$-system. Also,
+	\begin{align*}
+		B \in \mathcal{G} \implies \mu_1(A \cap B^c) &= \mu_1(A) - \mu_1(A \cap B) \\
+		&= \mu_2(A) - \mu_2(A \cap B) = \mu_2(A \cap B^c).
+	\end{align*}
+	So $\mathcal{G}$ is closed under complementation.
+
+	Now take $B_1,B_2,\dots$ disjoint.
+	\begin{align*}
+		\mu_1 \left( A \cap \bigcup_{i=1}^\infty B_i \right) &= \sum_i \mu_i(A \cap B_i) \\
+		&= \sum_i \mu_2(A \cap B_i) \\
+		&= \mu_2 \left( A \cap \bigcup_{i=1}^\infty B_i \right),
+	\end{align*}
+	so $\mathcal{G}$ is closed under countable union. Thus $\mathcal{G}$ is a $\lambda$-system, and it contains a $\pi$-system $\mathcal{P}$. Thus $\mathcal{G} \supset \sigma(\mathcal{P})$. Clearly $\mathcal{G} \subset \sigma(\mathcal{P})$. Therefore $\mathcal{G}=\sigma(\mathcal{P})$. And so $\mu_1$ and $\mu_2$ agree on $\sigma(\mathcal{P})$.
+\end{proof}
+
+\begin{theorem} \label{thm:general-measure-agree-2}
+	Suppose $\mu_1$ and $\mu_2$ are finite measures on $\sigma(\mathcal{P})$, where $\mathcal{P}$ is a $\pi$-system and $\Omega$ is a finite or countable union of sets in $\mathcal{P}$. If $\mu_1$ and $\mu_2$ agree on $\mathcal{P}$, then they agree on $\sigma(\mathcal{P})$.
+\end{theorem}
+
+\begin{example}[Counterexample to Theorem~\ref{thm:general-measure-agree-2}] \label{ex:2.2}
+	Suppose $\mathcal{P} = \{\varnothing\}$. Then $\mathcal{P}$ is a $\pi$-system and $\sigma(\mathcal{P}) = \{\Omega,\varnothing\}$. Any two finite measures agree on $\mathcal{P}$, but they do not necessarily agree on $\sigma(\mathcal{P})$. Theorem~\ref{thm:general-measure-agree-2} does not apply in this case because $\Omega$ is not a countable union of sets in $\mathcal{P}$.
+\end{example}
+
+\begin{definition}[Outer measure] \label{def:outer-measure}
+	An \emph{outer measure} is a set function $\mu^*$ on all subsets of $\Omega$ satisfying:
+	\begin{enumerate}[label=(\roman*)]
+		\item $\mu^*(\varnothing) = 0$
+		\item $0 \leq \mu^*(A) \leq \infty$ for all $A \subset \Omega$
+		\item $\mu^*(A) \leq \mu^*(B)$ whenever $A \subset B$
+		\item $\mu^*(\bigcup_i A_i) \leq \sum_i \mu^*(A_i)$ (Countable subadditivity)
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem} \label{thm:outer-measure}
+	Recall the class definition from earlier.
+	\[
+		\mathcal{M}(\mu^*) = \{A \subset \Omega:\;\mu^*(AE) + \mu^*(A^cE) \leq \mu^*(E) \textrm{ for all } E \subset \Omega\}.
+	\]
+	If $\mu^*$ is an outer measure, then $\mathcal{M}(\mu^*)$ is a $\sigma$-field, and $\mu^*$ restricted to $\mathcal{M}(\mu^*)$ is a measure.
+\end{theorem}
+
+\begin{theorem}[Extension theorem, general measures] \label{thm:general-measure-extension}
+	A measure $\mu$ on a field $\mathcal{F}_0$ has an extension to the generating $\sigma$-field.
+\end{theorem}
+
+\begin{proof}
+	It is enough to show that 
+\end{proof}
+
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
