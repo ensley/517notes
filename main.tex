@@ -14,7 +14,7 @@
 %
 % Compiling this template:
 % This template uses biber for its bibliography and makeindex for its index.
-% When you first open the template, compile it from the command line with the 
+% When you first open the template, compile it from the command line with the
 % commands below to make sure your LaTeX distribution is configured correctly:
 %
 % 1) pdflatex main
@@ -23,7 +23,7 @@
 % 4) pdflatex main x 2
 %
 % After this, when you wish to update the bibliography/index use the appropriate
-% command above and make sure to compile with pdflatex several times 
+% command above and make sure to compile with pdflatex several times
 % afterwards to propagate your changes to the document.
 %
 % This template also uses a number of packages which may need to be
@@ -131,7 +131,7 @@
 \end{definition}
 
 \begin{remark} \label{rem:1.1}
-	A field is a \emph{set of sets}. Suppose we are flipping a coin twice, so the sample space is $\Omega = \{\textrm{HH, HT, TH, TT}\}$. We observe an event $A \subset \Omega$, say $A = \{\textrm{TT}\}$. If we consider the set of sets $\mathcal{G} = \{\varnothing, \Omega, A, A^c\}$, then we \emph{cannot} say $\textrm{TT} \in \mathcal{G}$. Rather, we should write $\{\textrm{TT}\} \in \mathcal{G}$ or $A \in \mathcal{G}$. 
+	A field is a \emph{set of sets}. Suppose we are flipping a coin twice, so the sample space is $\Omega = \{\textrm{HH, HT, TH, TT}\}$. We observe an event $A \subset \Omega$, say $A = \{\textrm{TT}\}$. If we consider the set of sets $\mathcal{G} = \{\varnothing, \Omega, A, A^c\}$, then we \emph{cannot} say $\textrm{TT} \in \mathcal{G}$. Rather, we should write $\{\textrm{TT}\} \in \mathcal{G}$ or $A \in \mathcal{G}$.
 \end{remark}
 
 The following are some examples of fields.
@@ -229,7 +229,7 @@ Some elementary properties of fields:
 	\item $\sigma(\mathcal{A})$ is countably generated (separable) if $\mathcal{A}$ is countable.
 	\item The Borel $\sigma$-field $\mathcal{B} = \sigma(\{(a,b]:\;0 \leq a \leq b \leq 1$ rationals$\})$ is countably generated.
 	\item $\mathcal{F} = \{A \subset (0,1]:\;A$ or $A^c$ is countable$\}$ is \emph{not} countably generated. To show this, suppose $\mathcal{F} = \sigma(\{A_1,A_2,\dots\}) = \sigma(\{B_1,B_2,\dots\})$, where $B_i = A_i$ if $A_i$ is countable, or $B_i = A_i^c$ if $A_i$ is not countable. In short, we are assuming that $\mathcal{F}$ is separable, and we will work towards a contradiction. We have constructed every $B_i$ to be countable, and so we can define $\Omega_0 = \bigcup_{i=1}^\infty B_i$ that is countable as well. Now $\mathcal{F} = \sigma(\mathcal{A}_0)$, where $\mathcal{A}_0 = \{\{x\}:\;x \in \Omega_0\}$. Since $\mathcal{A}_0 \subset \mathcal{G} = \{B,\;B \cup \Omega_0^c:\;B \subset \Omega_0\} \subset \mathcal{F}$, and $\mathcal{G}$ is a $\sigma$-field, it follows that $\mathcal{G} = \mathcal{F}$. But if $y \in \Omega_0^c$, then $\{y\} \notin \mathcal{G}$. This is a contradiction, and so $\mathcal{F}$ is not separable.
-	\item If $\mathcal{F}_1 \subset \mathcal{F}_2$ and $\mathcal{F}_2$ is countably generated, then $\mathcal{F}_1$ need not be countably generated. This is counterintuitive, but it is readily apparent from the previous examples; suppose $\mathcal{F}_1$ is the countable-cocountable $\sigma$-field on $(0,1]$ and $\mathcal{F}_2 = \mathcal{B}$, the Borel $\sigma$-field. 
+	\item If $\mathcal{F}_1 \subset \mathcal{F}_2$ and $\mathcal{F}_2$ is countably generated, then $\mathcal{F}_1$ need not be countably generated. This is counterintuitive, but it is readily apparent from the previous examples; suppose $\mathcal{F}_1$ is the countable-cocountable $\sigma$-field on $(0,1]$ and $\mathcal{F}_2 = \mathcal{B}$, the Borel $\sigma$-field.
 \end{enumerate}
 
 \section{Lecture 3, August 28}
@@ -415,7 +415,7 @@ We will now present and prove some facts about this particular collection based 
 	\[
 		P^*\left( E \cap \left( \bigcup_{i=1}^n A_i \right) \right) = \sum_{i=1}^n P^*(EA_i).
 	\]
-	Because $P^*(A) \geq 0$ for any $A$, It follows that $P^*(E \cap (\bigcup_{i=1}^\infty A_i)) \geq P^*(E \cap (\bigcup_{i=1}^n A_i))$. Taking the limit leads us to conclude that 
+	Because $P^*(A) \geq 0$ for any $A$, It follows that $P^*(E \cap (\bigcup_{i=1}^\infty A_i)) \geq P^*(E \cap (\bigcup_{i=1}^n A_i))$. Taking the limit leads us to conclude that
 	\[
 		P^* \left( E \cap \left( \bigcup_{i=1}^\infty A_i \right) \right) \geq P^*\left( E \cap \left( \bigcup_{i=1}^n A_i \right) \right) = \sum_{i=1}^n P^*(EA_i) \rightarrow \sum_{i=1}^\infty P^*(EA_i).
 	\]
@@ -577,7 +577,7 @@ We need disjointness to prove uniqueness.
 
 	\vspace{10pt}
 	\textbf{Part 1}. First we will show that if $A \in \mathcal{L}_0$, then $\mathcal{L}_A$ is a $\lambda$-system.
-	
+
 	\begin{enumerate}
 		\item If $A \in \mathcal{L}_0$, then $A \cap \Omega \in \mathcal{L}_0$. So $\Omega \in \mathcal{L}_A$, verifying property ($\lambda$1).
 		\item If $A \in \mathcal{L}_0$, then $A^c \in \mathcal{L}_0$. Furthermore, if $B \in \mathcal{L}_A$, then $B \in \mathcal{L}_0$. Now consider the sets $AB$ and $A^c$. These are disjoint, and each is in $\mathcal{L}_0$. As a result, $(AB \cup A^c)^c \in \mathcal{L}_0$, and $(AB \cup A^c)^c = A \cap (AB)^c = B^cA \in \mathcal{L}_0$. We know that $B^c \in \mathcal{L}_0$, and so this implies that $B^c \in \mathcal{L}_A$. Therefore $\mathcal{L}_A$ is closed under complementation, verifying property ($\lambda$2).
@@ -1045,7 +1045,7 @@ Note that Borel-Cantelli can actually help tell you \emph{when} $P(A)$ is 0 or 1
 \begin{theorem}[Bernstein's Theorem] \label{thm:bernstein}
 	If $f$ is continuous, then $B_n(x) \to f(x)$ uniformly on $[0,1]$, where
 	\[
-		B_n(x) = \sum_{k=0}^n f(k/n) {n \choose k} x^k (1-x)^{n-k}
+		B_n(x) = \sum_{k=0}^n f(k/n) \binom{n}{k} x^k (1-x)^{n-k}
 	\]
 	are Bernstein polynomials.
 \end{theorem}
@@ -1057,7 +1057,7 @@ Note that Borel-Cantelli can actually help tell you \emph{when} $P(A)$ is 0 or 1
 	\]
 	Because $f$ is uniformly continuous, $\lim_{\epsilon \to 0} \delta(\epsilon) = 0$, and so this inequality (provided we pick a sufficiently small $\epsilon$, say $\epsilon = n^{-1/3}$) will give the result in the theorem.
 
-	Fix $n \geq 1$ and $x \in [0,1]$ for the moment. Let $X_1,\dots,X_n$ be independent random variables (on some probability space) such that $P(X_i=1) = x$ and $P(X_i=0) = 1-x$. Define $S = X_1 + \cdots + X_n$. Since $S$ is just the sum of $n$ Bernoulli random variables, $P(S=k) = {n \choose k} x^k(1-x)^{n-k}$, and by the formula for calculating expected values of functions of random variables, $\textrm{E}[f(S/n)] = B_n(x)$. Additionally, $\textrm{E}[S/n] = x$, so by the law of large numbers, there should be a high probability that $S/n$ is near $x$, and hence (because $f$ is continuous) that $f(S/n) = f(x)$. Therefore, $\textrm{E}[f(S/n)]$ should be near $f(x)$. This is the probabilistic idea behind the definition of the Bernstein polynomial $B_n(x)$.
+	Fix $n \geq 1$ and $x \in [0,1]$ for the moment. Let $X_1,\dots,X_n$ be independent random variables (on some probability space) such that $P(X_i=1) = x$ and $P(X_i=0) = 1-x$. Define $S = X_1 + \cdots + X_n$. Since $S$ is just the sum of $n$ Bernoulli random variables, $P(S=k) = \binom{n}{k} x^k(1-x)^{n-k}$, and by the formula for calculating expected values of functions of random variables, $\textrm{E}[f(S/n)] = B_n(x)$. Additionally, $\textrm{E}[S/n] = x$, so by the law of large numbers, there should be a high probability that $S/n$ is near $x$, and hence (because $f$ is continuous) that $f(S/n) = f(x)$. Therefore, $\textrm{E}[f(S/n)]$ should be near $f(x)$. This is the probabilistic idea behind the definition of the Bernstein polynomial $B_n(x)$.
 
 	For some $\epsilon > 0$, consider the set $\{|S/n-x| < \epsilon\}$. This is the set of values of $x$ that are ``near'' (within $\epsilon$ of) $S/n$. On this set, $|f(S/n) - f(x)|$ is bounded by $\delta(\epsilon)$. On $\{|S/n-x| \geq \epsilon\}$, the complementary set, $|f(S/n) - f(x)|$ is bounded by $2M$. Now
 	\begin{align*}
@@ -1162,8 +1162,29 @@ Notice the extra condition in (II). A simple example demonstrating why this is n
 	Suppose $\mu_1$ and $\mu_2$ are finite measures on $\sigma(\mathcal{P})$, where $\mathcal{P}$ is a $\pi$-system and $\Omega$ is a finite or countable union of sets in $\mathcal{P}$. If $\mu_1$ and $\mu_2$ agree on $\mathcal{P}$, then they agree on $\sigma(\mathcal{P})$.
 \end{theorem}
 
+\begin{proof}
+	Suppose $\mu_1$ and $\mu_2$ are finite measures on $\sigma(\mathcal{P})$. We want to find sets $A_1,A_2,\dots \in \mathcal{P}$ such that $\bigcup_{i=1}^\infty A_i = \Omega$ where $\mu_1(A_i) < \infty$. It is important to note that we can't simply disjointify the $A_i$ here because there is no guarantee that $A_1-A_2$, say, will be in $\mathcal{P}$. Instead, let $C \in \sigma(\mathcal{P})$. Then, using the inclusion-exclusion principle,
+	\begin{align*}
+		\mu_1 \left( C \cap \bigcup_{i=1}^k A_i \right) &= \mu_1 \left( \bigcup_{i=1}^k (C \cap A_i) \right) \\
+		&= \sum_{i=1}^k \mu_1(C \cap A_i) - \sum_{i < j} \mu_1(C \cap A_i \cap A_j) + \cdots \\
+		&\qquad \qquad + (-1)^{k+1} \mu_1(C \cap A_1 \cap A_2 \cap \cdots \cap A_k) \\
+		&= \sum_{i=1}^k \mu_2(C \cap A_i) - \sum_{i < j} \mu_2(C \cap A_i \cap A_j) + \cdots \\
+		&\qquad \qquad + (-1)^{k+1} \mu_2(C \cap A_1 \cap A_2 \cap \cdots \cap A_k) \\
+		&= \mu_2 \left( C \cap \bigcup_{i=1}^k A_i \right).
+	\end{align*}
+	So $\mu_1(C) = \mu_2(C)$.
+\end{proof}
+
 \begin{example}[Counterexample to Theorem~\ref{thm:general-measure-agree-2}] \label{ex:2.2}
 	Suppose $\mathcal{P} = \{\varnothing\}$. Then $\mathcal{P}$ is a $\pi$-system and $\sigma(\mathcal{P}) = \{\Omega,\varnothing\}$. Any two finite measures agree on $\mathcal{P}$, but they do not necessarily agree on $\sigma(\mathcal{P})$. Theorem~\ref{thm:general-measure-agree-2} does not apply in this case because $\Omega$ is not a countable union of sets in $\mathcal{P}$.
+\end{example}
+
+\begin{example}[Another counterexample] \label{ex:2.3}
+	Consider the real number line $\mathbb{R}$ and the Borel $\sigma$-field $\mathcal{B}$. Define $\mathcal{P}_0 = \{(-\infty,x]:\;x \in \mathbb{R}\}$. This is a $\pi$-system: it should be clear that the intersection of two such sets will also be in $\mathcal{P}_0$.
+
+	If we take two sets $(-\infty,a]$ and $(-\infty,b] \in \mathcal{P}_0$, notice that $(-\infty,a]^c \cap (\infty,b] = (a,b]$. Define $\mathcal{P} = \{(a,b]:\;a \leq b < \infty\}$. Then $\sigma(\mathcal{P}_0) = \sigma(\mathcal{P}) = \mathcal{B}$.
+
+	Now take $\mu_1(a,b] = b-a$ and $\mu_2(a,b] = 2(b-a)$. Then $\mu_1 = \lambda$, our standard concept of Lebesgue measure, and $\mu_2 = 2\lambda$. These are distinct, yet $\mu_1 = \mu_2$ on $\mathcal{P}_0$. Theorem~\ref{thm:general-measure-agree-2} does not hold in this situation because $\mu_1$ and $\mu_2$ are infinite measures.
 \end{example}
 
 \begin{definition}[Outer measure] \label{def:outer-measure}
@@ -1189,21 +1210,549 @@ Notice the extra condition in (II). A simple example demonstrating why this is n
 \end{theorem}
 
 \begin{proof}
-	It is enough to show that 
+	The proof follows in the same manner as the one for Theorem~\ref{thm:extension}.
 \end{proof}
+
+
+
+
+\chapter{}
+
+\section{Lecture 12, September 23 (continued)}
+
+\begin{definition}[Measurable function] \label{def:measurable-function}
+	The function $T:\;(\Omega,\mathcal{F}) \to (\Omega',\mathcal{F}')$ is \emph{measurable $\mathcal{F}/\mathcal{F}'$} if $T^{-1}(A') \in \mathcal{F}$ for all $A' \in \mathcal{F}'$. Sometimes this is simply written ``$T$ is measurable $\mathcal{F}$.''
+\end{definition}
+
+We can use this concept to define a measure on another space. If $\mu$ is a measure on $(\Omega,\mathcal{F})$, then $\mu(T^{-1}(A'))$ for $A' \in \mathcal{F}'$ is a measure on $(\Omega',\mathcal{F}')$. The following property of measurable functions is useful:
+\[
+	T^{-1} \left( \bigcup_{i=1}^\infty A_i' \right) = \bigcup_{i=1}^\infty T^{-1}(A_i').
+\]
+To see this, take any point $x \in T^{-1} \left( \bigcup_i^\infty A_i' \right)$. Then $T(x) \in \bigcup_i^\infty A_i'$, which implies $T(x) \in A_j'$ for some $j$, which implies $x \in T^{-1}(A_j)$, which finally implies $x \in \bigcup_i^\infty T^{-1}(A_i')$.
+
+This is most useful for translating a measure to a measure on a real line, working on it there, and then translating it back.
+
+\begin{theorem} \label{thm:measurable-function-props}
+	The following two statements are true.
+	\begin{enumerate}[label=(\alph*)]
+		\item $T^{-1}(A') \in \mathcal{F}$ for all $A' \in \mathcal{A}'$ implies that $T$ is $\mathcal{F}/\sigma(\mathcal{A}')$ measurable.
+		\item If $T:\;(\Omega,\mathcal{F}) \to (\Omega',\mathcal{F}')$ and $T':\;(\Omega',\mathcal{F}') \to (\Omega'',\mathcal{F}'')$ are measurable, then $T'T:\;(\Omega,\mathcal{F}) \to (\Omega'',\mathcal{F}'')$ is measurable.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	For (a): Consider the class
+	\[
+		\mathcal{G} = \{A' \in \mathcal{F}':\;T^{-1}(A') \in \mathcal{F}\}.
+	\]
+	Then because $T^{-1}(A') \in \mathcal{F}'$ for \emph{all} $A' \in \mathcal{A}'$, $\mathcal{G} \supset \mathcal{A}'$. It is straightforward to show, as we have done many times before, that $\mathcal{G}$ is a $\sigma$-field on $\Omega'$. Therefore $T^{-1}(A') \in \mathcal{F}$ for all $A' \in \sigma(\mathcal{A}')$, which means that $T$ is $\mathcal{F}/\sigma(\mathcal{A}')$ measurable.
+
+	For (b): $(T'T)^{-1}(A'') = T^{-1}(T'^{-1}(A''))$. $A'' \in \mathcal{F}'$ implies $T'^{-1}(A'') \in \mathcal{F}'$. So $T^{-1}(T'^{-1}(A'')) \in \mathcal{F}$.
+\end{proof}
+
+\section{Lecture 13, September 25}
+
+Recall that the $\sigma$-field $\mathcal{R}^k$ generated by all $k$-dimensional rectangles in $\mathbb{R}^k$ is called the \emph{Borel $\sigma$-field}.
+\begin{align*}
+	\mathcal{R}^k &= \{y_1,\dots,y_k:\;a_i \leq y_i \leq b_i,\;i=1,\dots,k\} \\
+	&= [a_1,b_1] \times [a_2,b_2] \times \cdots \times [a_k,b_k].
+\end{align*}
+
+\begin{definition}[Random vector] \label{def:random-vector}
+	A \emph{random vector} is a measurable function $f:\;(\Omega,\mathcal{F}) \to (\mathbb{R}^k,\mathcal{R}^k)$. If $k=1$, then $f$ is called a \emph{random variable}.
+\end{definition}
+
+A measurable function $f:\;(\mathbb{R}^i,\mathcal{R}^i) \to (\mathbb{R}^k,\mathcal{R}^k)$ is called a \emph{Borel function}.
+
+Note that $f(\omega) = (f_1(\omega),f_2(\omega),\dots,f_k(\omega))$ is a random vector if and only if each $f_i:\;\Omega \to \mathbb{R}$ is a random variable.
+
+Look at the class $\mathcal{A} = \{(-\infty,x]:\;x \in \mathbb{R}\}$. Then $\sigma(\mathcal{A}) = \mathcal{R}$, the Borel $\sigma$-field. This is because $\mathcal{R} = \sigma(\mathcal{I})$, where $\mathcal{I} = \{(a,b]:\;a \leq b\}$, and $(-\infty,x] = \bigcup_{-n<x} (-n,x]$. Again, observe that $(-\infty,b] \cap (-\infty,a]^c = (a,b]$. So the two characterizations are identical. This is why CDFs only use sets of the type in the class $\mathcal{A}$: they give all the information you need.
+
+\begin{theorem} \label{thm:measurable-real-functions}
+	$ $
+	\begin{enumerate}[label=(\alph*)]
+		\item Continuous functions on $\mathbb{R}^j$ into $\mathbb{R}^k$ are measurable.
+		\item If $f_i:\;\Omega \to \mathbb{R}$ are random variables, and $g:\;\mathbb{R}^k \to \mathbb{R}$ is a Borel function, then $g(f_1,\dots,f_k)$ is measurable $\mathcal{F}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Part (a) is obvious. If $f:\;\mathbb{R}^j \to \mathbb{R}^k$ is continuous, then write $f$ as
+	\[
+		f(x_1,\dots,x_j) = \big( f_1(x_1,\dots,x_j), \dots, f_k(x_1,\dots,x_j) \big).
+	\]
+	Then each $f_i:\;\mathbb{R} \to \mathbb{R}^k$ is continuous.
+
+	For part (b), if $f:\;(\Omega,\mathcal{F}) \xrightarrow{\textrm{meas}} (\mathbb{R}^k,\mathcal{R}^k)$, then $(g \circ f)(\omega) = g(f(\omega))$ is measurable if $g$ is.
+\end{proof}
+
+From this theorem it immediately follows that $\sum_{i=1}^k f_i$ and $\prod_{i=1}^k f_i$ are measurable if the $f_i$ are.
+
+\vspace{10pt}
+
+We now shift our focus to the limits of sequences of measurable functions. The ``extended real line,'' denoted $\overline{\mathbb{R}}$, is simply $\mathbb{R}$ with the symbols $-\infty$ and $\infty$ appended. Consider a function $f:\;(\Omega,\mathcal{F}) \to (\overline{\mathbb{R}}, \overline{\mathcal{R}})$. Here $\overline{\mathbb{R}} = (-\infty,\infty]$ and $\overline{\mathcal{R}} = \sigma(\mathcal{R},\{-\infty\},\{\infty\}) = \sigma(\{(a,b]:\;a \leq b\},\{-\infty\},\{\infty\})$. If $f$ is measurable, and the sets $\{\omega:\;f(\omega) = \infty\}$ and $\{\omega:\;f(\omega) = -\infty\}$ are both in $\mathcal{F}$, then we say that $f$ is \emph{extended measurable}.
+
+\begin{theorem} \label{thm:real-measurable-functions-properties}
+	Suppose $f_1,f_2,\dots$ are real functions measurable $\mathcal{F}$ (extended measurable or not).
+	\begin{enumerate}[label=(\alph*)]
+		\item The functions $\sup_n f_n$, $\inf_n f_n$, $\limsup_n f_n$, and $\liminf_n f_n$ are all measurable $f$.
+		\item If $\lim_n f_n$ exists everywhere, then it is measurable $\mathcal{F}$.
+		\item $L = \{\omega:\;\lim_n f_n(\omega) \textrm{exists}\}$ is measurable.
+		\item If $f$ is measurable $\mathcal{F}$, then $G = \{\omega:\;f_n(\omega) \to f(\omega)\} \in \mathcal{F}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Part (a): Notice that $\{\sup_n f_n \leq x\} = \bigcap_n \{f_n \leq x\}$ lies in $\mathcal{F}$, even if $x = -\infty$ or $\infty$. Thus $\sup_n f_n$ is measurable. We can conclude that $\inf_n f_n$ is measurable by the same argument. Hence $\limsup_n f_n = \inf_n \sup_{k \geq n} f_k$ is measurable, and $\liminf_n f_n = \sup_n \inf_{k \geq n} f_k$ is measurable.
+
+	Part (b): If $\lim_n f_n$ exists, it is equal to both $\liminf_n f_n$ and $\limsup_n f_n$, so of course it is measurable.
+
+	Part (c): Define $g = \liminf_n f_n$ and $h = \limsup_n f_n$. The set $L$ is simply $L = \{\omega:\;g(\omega) = h(\omega)\}$. At a glance this seems to be measurable, but we must be careful with infinity values.
+	\begin{align*}
+		L &= \{\omega:\;h(\omega)=\infty, g(\omega)=\infty\} \cup \{\omega:\;h(\omega)=-\infty, g(\omega)=-\infty\} \\
+		& \qquad \qquad \cup \{\omega:\;-\infty < h(\omega) = g(\omega) < \infty\} \\
+		&= \Big[ \{\omega:h(\omega)=\infty\} \cap \{\omega:g(\omega)=\infty\} \Big] \cup \Big[ \{\omega:h(\omega)=-\infty\} \cap \{\omega:g(\omega)=-\infty\} \Big] \\
+		& \qquad \qquad \cup \{\omega:\;h(\omega) - g(\omega) = 0 \textrm{ and } -\infty < g(\omega),h(\omega) < \infty\}
+	\end{align*}
+	The first two terms in this union are in $\mathcal{F}$. It is enough to show that the last one is in $\mathcal{F}$. This part can be written as
+	\[
+		\{\omega:\;h(\omega)-g(\omega)=0\} \cap \{\omega:\;|h(\omega)|<\infty, |g(\omega)|<\infty\}.
+	\]
+	Both of these are indeed in $\mathcal{F}$, so finally we can conclude that $L$ is measurable.
+
+	Part (d): The set $G$ is $G = \{\omega:\;\liminf_n f_n(\omega) = \limsup_n f_n(\omega) = f(\omega)\}$. By a similar argument as above, $G$ is measurable.
+\end{proof}
+
+\section{Lecture 14, September 28}
+
+The next theorem, Egoroff's Theorem, essentially says that if a sequence of real-valued measurable functions converges to another measurable function, we have uniform convergence once we throw out a very small set (of measure less than $\epsilon$).
+
+\begin{theorem}[Egoroff's Theorem] \label{thm:egoroff}
+	Suppose $f_n$ and $f$ are real-valued $\mathcal{F}$-measurable functions such that $f_n(\omega) \to f(\omega)$ for $\omega \in A$, where $\mu(A) < \infty$. Then for each $\epsilon > 0$, there exists a measurable subset $B \subset A$ such that $\mu(B) < \epsilon$ and $f_n(\omega) \to f(\omega)$ uniformly on $A-B$.
+\end{theorem}
+
+\begin{proof}
+	Let 
+	\[
+		B_n^{(k)} = \bigcup_{i \geq n} \left\{\omega \in A:\;|f(\omega)-f_i(\omega)| > \frac{1}{k}\right\}.
+	\]
+	Since $\limsup_n B_n^{(k)} = \varnothing$, $B_n^{(k)} \downarrow \varnothing$ as $n \to \infty$. Choose an $n_k$ such that $\mu(B_{n_k}^{(k)} < \frac{\epsilon}{2^k}$, and define $B = \bigcup_{k=1}^\infty B_{n_k}^{(k)}$. Then
+	\[
+		A-B = A \bigcap_{k=1}^\infty B_{n_k}^{(k)c} = \bigcap_{k=1}^\infty \bigcap_{i \geq n_k}^\infty \left\{ \omega \in A:\;|f(\omega)-f_i(\omega)| \leq \frac{1}{k} \right\}.
+	\]
+	So $f_n(\omega) \to f(\omega)$ uniformly on this set.
+\end{proof}
+
+It is important to note that Egoroff's Theorem does not hold without the condition $\mu(A) < \infty$, as we will illustrate in the following example.
+
+\begin{example} \label{ex:egoroff-false}
+	Suppose $\Omega = \{1,2,\dots\}$, and let $\mathcal{F}$ be the class of all subsets of $\Omega$. Let $\mu$ be the counting measure. In this situation, define the functions
+	\[
+		f_n(\omega) = n\mathbb{I}_{\{n,n+1,\dots\}} = \begin{cases}
+			n & \textrm{if $\omega \geq n$} \\
+			0 & \textrm{otherwise.}
+		\end{cases}
+	\]
+	Here $f_n(\omega) \to 0$ as $n \to \infty$ for all $\omega$, but we don't have uniform convergence, violating the theorem. The reason it fails is that $\Omega$ has infinite measure. On a finite set, however, $f_n(\omega)$ does converge to 0 uniformly.
+\end{example}
+
+We will now discuss the concept of measures on $\mathbb{R}^k$. \emph{Lebesgue measure $\lambda_k$} on the class $\mathcal{R}^k$ of $k$-dimensional Borel sets is the extension of the regular Lebesgue measure $\lambda$.
+\[
+	\lambda_k\{\bm{x}:\;a_i < x_i < b_i,\;i=1,\dots,k\} = \prod_{i=1}^k (b_i-a_i).
+\]
+
+Lebesgue measure does not change if the set is shifted by a constant. If $A \in \mathcal{R}^k$, then $A+\bm{x} = \{a+\bm{x}:\;a \in A\} \in \mathbb{R}^k$ and $\lambda_k(A) = \lambda_k(A+\bm{x})$. To prove this, define
+\[
+	\mathcal{G} = \{A \in \mathcal{R}^k:\;A+\bm{x} \in \mathcal{R}^k \textrm{ and } \lambda_k(A) = \lambda_k(A+\bm{x})\}.
+\]
+This class $\mathcal{G}$ contains $\mathcal{I}_k$, the class of all rectangles $[a_1,b_1] \times \cdots \times [a_k,b_k]$. It is straightforward to show that $\mathcal{G}$ is a $\lambda$-system and that $\mathcal{I}_k$ is a $\pi$-system. Thus $\mathcal{R}^k \supset \mathcal{G} \supset \sigma(\mathcal{I}_k) = \mathcal{R}^k$, and so $\mathcal{G} = \mathcal{R}^k$.
+
+If $T$ is a non-singular linear transformation on $\mathbb{R}^k \to \mathbb{R}^k$, then $A \in \mathcal{R}^k$ implies $T(A) \in \mathcal{R}^k$, and $\lambda_k(T(A)) = |\det T| \cdot \lambda_k(A)$. To prove this, note that by elementary row and column operations, $T$ can be represented as the product of linear transformations of three special forms:
+\begin{enumerate}[label=(\alph*)]
+	\item $T(x_1,\dots,x_k) = (x_{\pi 1},\dots,x_{\pi k})$;
+	\item $T(x_1,\dots,x_k) = (\alpha x_1,\dots,x_k)$;
+	\item $T(x_1,\dots,x_k) = (x_1+x_2, x_2,\dots,x_k)$.
+\end{enumerate}
+Therefore, if we can prove the property holds for each of the above, we have proved that it holds for any $T$. Define
+\[
+	\mathcal{G} = \{A \in \mathcal{R}^k:\;T(A) \in \mathcal{R}^k,\;\lambda_k(T(A)) = |\det T| \lambda_k(A)\}.
+\]
+Also define $\mathcal{I}_k^0 = \{(a_1,b_1] \times \cdots \times (a_k,b_k]:\;a_i,b_j \textrm{ are all rationals}\}.$ This is a $\pi$-system. By the previous theorem, $\sigma(\mathcal{I}_i^0) = \mathcal{R}^k$. Continue in the same way as above, by showing that $\mathcal{G}$ is a $\lambda$-system and concluding that $\mathcal{G} = \mathcal{R}^k$.
+
+\section{Lecture 15, September 30}
+
+Suppose $\mu$ is a measure on $\mathcal{R}$ such that $\mu(A) < \infty$ for each bounded measurable set $A$. Define $F(x) = \mu(0,x]$ if $x \geq 0$, and $F(x) = -\mu(x,0]$ if $x \leq 0$. This function satisfies $\mu(a,b] = F(b)-F(a)$. If $\mu$ is a \emph{finite measure}, it is common practice to standardize $F$ by defining it by $F(x) = \mu(-\infty,x]$. In this case, $\lim_{x \to -\infty} F(x) = 0$ and $\lim_{x \to \infty} F(x) = \mu(\mathbb{R})$.
+
+\begin{theorem} \label{thm:distribution-function-exists}
+	If $F$ is a non-decreasing right-continuous real function on the line, then there exists on $\mathcal{R}$ a unique measure $\mu$ satisfying $\mu(a,b] = F(b)-F(a)$.
+\end{theorem}
+
+\begin{example}[Problem 12.1] \label{ex:12.1}
+	Suppose $\mu$ is a measure on $\mathcal{R}$ that is finite for bounded sets and $\mu(A+x) = \mu(A)$. Then $\mu(A) = c \lambda(A)$ for all $A \in \mathcal{R}$ and for some $c \geq 0$.
+
+	Let $a,b$ be rationals and $b-a = \frac{r}{m}$.
+	\begin{align*}
+		\mu(a,b] &= \mu(0,b-a] = \mu \left( 0,\frac{r}{m} \right] = \sum_{i=1}^r \mu \left( \frac{i-1}{m}, \frac{i}{m} \right] = r \mu \left( 0, \frac{1}{m} \right) \\
+		&= \frac{r}{m} \mu(0,1] = \mu(0,1] \lambda(a,b].
+	\end{align*}
+
+	Here we have two measures, $\mu_1 = \mu$ and $\mu_2 = c\lambda$ where $c = \mu(0,1]$. Define
+	\[
+		\mathcal{G} = \{A \in \mathcal{R}:\;\mu_1(A) = \mu_2(A)\} \supset \mathcal{I}_0 = \{(a,b]:\;a,b \textrm{ rational}\}.
+	\]
+	$\mathcal{I}_0$ is a $\pi$-system. We can write the real line as $\mathbb{R} = \bigcup_{n=1}^\infty (-n,n]$, and $\mu_1(-n,n] = \mu_2(-n,n] < \infty$, $(-n,n] \in \mathcal{I}_0$. So the property at the beginning of this example characterized Lebesgue measure in a sense.
+\end{example}
+
+We can think of measures on $\mathbb{R}^2$ as well, although we need to be a little careful. Suppose $\mu$ is a finite measure and $A$ is a rectangle $A = \{\bm{x}:\;a_i < x_i \leq b_i,\;i=1,2\}$. Then
+\[
+	\mu(A) = F(b_1,b_2) - F(b_1,a_2) - F(a_1,b_2) + F(a_1,a_2).
+\]
+This clearly requires that the right hand side is non-negative for all $a_i$, $b_i$. We need a bit more than monotonicity to satisfy this.
+
+\begin{definition}[Distribution function] \label{def:cdf}
+	If $\mu$ is a probability measure, then $F$ as described above is called a \emph{(cumulative) distribution function}. In this case
+	\[
+		\lim_{x \to -\infty} F(x) = 0 \textrm{ and } \lim_{x \to \infty} F(x) = 1.
+	\]
+\end{definition}
+
+\begin{theorem} \label{thm:cdf-exists}
+	If $F$ is a non-decreasing, right-continuous function satisfying Definition~\ref{def:cdf}, then there exists on some probability space a random variable (r.v.) $X$ for which $F(x) = P(X \leq x)$.
+\end{theorem}
+
+\begin{proof}
+	This follows from Theorem~\ref{thm:distribution-function-exists}, since there exists a measure $\mu$ on the real line such that $\mu(\mathbb{R}) = 1$. Take $(\Omega,\mathcal{F},P) = (\mathbb{R},\mathcal{R},\mu)$, and $X(\omega) = \omega$.
+\end{proof}
+
+\begin{proof}[Alternative proof.]
+	Define $\varphi(u) = \inf\{x:\;u \leq F(x)\}$ for $0<u<1$. The \emph{quantile function} $\varphi$ is the inverse $F^{-1}$.
+
+	By definition of $\varphi$, if $F(x) \geq u$, then $x \geq \varphi(u)$. On the other hand, as $F$ is non-decreasing, $x \geq \varphi(u) \implies F(x) \geq F(\varphi(u))$. Let $A_u = \{y:\;F(y) \geq u\}$. Then there is a sequence $\{y_k\} \subseteq A_u$ such that $\lim_k y_k = \inf A_u = \varphi(u)$. Because $y_k \in A_u, y_k \geq \varphi(u)$. By the right continuity of $F$, we have $\lim_k F(y_k) = F(\varphi(u))$. But we also know that $F(y_k) \geq u$ for each $k$. So $F(x) \geq F(\varphi(u)) \geq u$. Hence $u \leq F(x)$ if and only if $\varphi(u) \leq x$.
+
+	Thus $\{x:\;u \leq F(x)\}$ is the interval $[\varphi(u),\infty)$. If we define $X(\omega) = \varphi(\omega)$ for $\omega \in (0,1)$, then $X$ is a r.v. and $P(X \leq x) = F(x)$.
+\end{proof}
+
+Some properties of the quantile function follow. Let $\varphi(u-)$ denote the left limit of $\varphi$ at $u$. For $0<u<1$,
+\begin{enumerate}[label=\arabic*.]
+	\item $F(x) < u$ if and only if $x < \varphi(u)$. This follows from the fact (derived in the alternative proof above) that $u \leq F(x)$ if and only if $\varphi(u) \leq x$.
+	\item $F(\varphi(u)-) \leq u \leq F(\varphi(u))$. The fact that $F(\varphi(u)) \leq u$ was established previously. Also, by property 1, whenever $x < \varphi(u)$, we have $F(x) < u$. So $F(\varphi(u)-) \leq u$.
+	\item If $F$ is continuous at $\varphi(u)$, then $F(\varphi(u)) = u$. This follows from property 2.
+\end{enumerate}
+
+Also, if $X$ has continuous distribution $F$, then $F(X)$ has a uniform distribution on the unit interval. Use properties 1 and 3 to see this.
+\vspace{10pt}
+
+We now shift focus to integration. Specifically, we will explore the difference between the Riemann integral and the integral with respect to a measure.
+
+\begin{definition} \label{def:measure-integral}
+	Let $f$ be a non-negative measurable function on $(\Omega,\mathcal{F},\mu)$. The \emph{integral} of $f$ is defined as
+	\[
+		\int f d\mu = \sup \sum_i \left[ \inf_{\omega \in A_i} f(\omega) \right] \mu(A_i),
+	\]
+	where the supremum is taken over all finite decompositions $\{A_i\}$ of $\Omega$.
+\end{definition}
+
+If $\Omega = \mathbb{R}$ and $\mu = \lambda$ is Lebesgue measure, then $\int f d\lambda$ is written $\int f(x) dx$ and is called the \emph{Lebesgue integral}. The Riemann integral, when it exists, coincides with the Lebesgue integral. If $\mathbb{Q}$ is the set of rational numbers and $f = \mathbb{I}_{\mathbb{Q}}$, then $f$ is not Riemann integrable, but its Lebesgue integral exists and $\int f d\lambda = \lambda(\mathbb{Q}) = 0$.
+
+\section{Lecture 16, October 2}
+
+\begin{theorem} \label{thm:measurable-sequence}
+	If $f$ is real and measurable $\mathcal{F}$, then there exists a sequence $\{f_n\}$ of simple functions, each measurable $\mathcal{F}$, such that
+	\begin{align*}
+		0 \leq f_n(\omega) &\uparrow f(\omega) \textrm{ if } f(\omega) \geq 0, \textrm{ and} \\
+		0 \geq f_n(\omega) &\downarrow f(\omega) \textrm{ if } f(\omega) \leq 0.
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	Use the function
+	\[
+		f_n(\omega) = \begin{cases}
+			-n & \textrm{if } -\infty \leq f(\omega) \leq -n, \\
+			-\frac{k-1}{2^n} & \textrm{if } -\frac{k}{2^n} \leq f(\omega) \leq -\frac{k-1}{2^n}, 1 \leq k \leq n2^n, \\
+			\frac{k-1}{2^n} & \textrm{if } \frac{k-1}{2^n} \leq f(\omega) \leq \frac{k}{2^n}, 1 \leq k \leq n2^n, \\
+			n & \textrm{if } n \leq f(\omega) \leq \infty.
+		\end{cases}
+	\]
+	The difference between $f_n$ and $f$ is always less than $\frac{1}{2^n}$, so as $n \to \infty$, $f_n$ approaches $f$. If $f(\omega) \geq 0$, then $f_n$ is always smaller than $f$, so $f_n \uparrow f$. If $f(\omega) \leq 0$, then $f_n$ is always larger than $f$, so $f_n \downarrow f$.
+\end{proof}
+
+Next we will look at some properties of integrals.
+
+\begin{theorem} \label{thm:integral-properties}
+	Suppose $f$, $g$, $f_n$ are all non-negative measurable functions and $a,b \geq 0$.
+	\begin{enumerate}[label=\roman*)]
+		\item If $f = \sum_i x_i \mathbb{I}_{A_i}$, where the $A_i$ are disjoint, then $\int f d\mu = \sum_i x_i \mu(A_i)$.
+		\item $0 \leq f \leq g \implies 0 \leq \int f d\mu \leq \int g d\mu$.
+		\item $0 \leq f_n \uparrow f \implies 0 \leq \int f_n d\mu \uparrow \int f d\mu$.
+		\item $\int (af+bg) d\mu = a \int f d\mu + b \int g d\mu$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{remark}\label{rem:integral-uniquely-defined}
+	The integral is uniquely defined by i) and iii). Suppose $\Lambda(\sum_i x_i \mathbb{I}_{A_i} = \sum_i x_i \mu(A_i)$ and $\Lambda$ also satisfies iii). We just shows that for $f \geq 0$ there exists a sequence $\{f_n\}$ of simple functions such that $0 \leq f_n \uparrow f$. So by iii),
+	\[
+		\Lambda(f) = \lim_n \Lambda(f_n) = \lim_n \int f_n d\mu = \int f d\mu.
+	\]
+\end{remark}
+
+\begin{proof}
+	i) Let $\{B_j\}$ be a finite measurable partition of $\Omega$. If $B_j \cap A_i \neq \varnothing$, then $x_i \geq b_j = \inf \{f(\omega):\;\omega \in B_j\}$. So
+	\[
+		\sum_j b_j \mu(B_j) = \sum_{i,j} b_j \mu(B_j \cap A_i) \leq \sum_{i,j} x_i \mu(B_j \cap A_i) = \sum_i x_i \mu(A_i).
+	\]
+	Equality holds if the partition $\{B_j\}$ coincides with $\{A_i\}$.
+
+	iii) It is enough to show that $\int f d\mu = \lim_n \int f_n d\mu$ or that
+	\[
+		S = \sum_{i=1}^m v_i \mu(A_i) \leq \lim_n \int f_n d\mu
+	\]
+	if $A_1,\dots,A_m$ is a measurable partition of $\Omega$ and $v_i = \inf \{f(\omega):\;\omega \in A_i\}$.
+
+	We only consider $i$ with $v_i \mu(A_i) > 0$, since $S=0$ if $v_i \mu(A_i) = 0$ for all $i$. Choose $a_i$ satisfying $0 < a_i < v_i$. Clearly $A_{i,n} = \{\omega \in A_i:\;f_n(\omega) > a_i\} \subset A_i$ and $A_{i,n} \uparrow A_i$ as $f_n \uparrow f$. $f_n \geq \sum_i a_i\mathbb{I}_{A_{i,n}}$ implies $\int f_n d\mu \geq \sum_i a_i \mu(A_{i,n}) \to \sum_i a_i \mu(A_i)$. Now let $a_i \uparrow v_i$ to get the desired result.
+
+	iv) \begin{align*}
+		\int (af_n + bg_n) d\mu &= \int (\sum_i aa_i \mathbb{I}_{A_i} + \sum_i bb_i \mathbb{I}_{B_i}) d\mu \\
+		&= \sum_i aa_i \mu(A_i) + \sum_i bb_i \mu(B_i) \\
+		&= a \sum_i a_i \mu(A_i) + b \sum_i b_i \mu(B_i) \\
+		&= a \int f_n d\mu + b \int g_n d\mu.
+	\end{align*}
+	Now $a \int f_n d\mu \to a \int f d\mu$ and $b \int g_n d\mu \to b \int g d\mu$, and $\int (af_n + bg_n) d\mu \to \int (af + bg) d\mu$. iv) follows.
+\end{proof}
+
+We can use the above to prove many other interesting properties.
+
+\begin{notation}
+	\emph{Almost everywhere}, abbreviated a.e., means ``outside a null set.''
+\end{notation}
+
+\begin{theorem} \label{thm:integral-properties-2}
+	Suppose $f,g \geq 0$. Let $A = \{\omega:\;f(\omega) > 0\}$.
+	\begin{enumerate}[label=\roman*)]
+		\item $f=0$ a.e. $\implies \int f d\mu = 0$.
+		\item $\mu(A) > 0 \implies \int f d\mu > 0$.
+		\item $\int f d\mu < \infty \implies f < \infty$ a.e.
+		\item $f \leq g$ a.e. $\implies \int f d\mu \leq \int g d\mu$.
+		\item $f = g$ a.e. $\implies \int f d\mu = \int g d\mu$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	i) Since $\mu(A) = 0$, $f = f\mathbb{I}_A \leq \infty \cdot \mathbb{I}_A$. Then $0 \leq \int f d\mu = \int f\mathbb{I}_A d\mu \leq \infty \cdot \mu(A) = 0$.
+
+	ii) Let $A_n = \{\omega:\;f(\omega) > \frac{1}{n}\}$. Then $A_n \uparrow A$ and $f \geq f\mathbb{I}_{A_n} \geq \frac{1}{n}\mathbb{I}_{A_n}$. So $\int f d\mu \geq \int f\mathbb{I}_{A_n} d\mu \geq \int \frac{1}{n}\mathbb{I}_{A_n} d\mu \geq \frac{1}{n} \mu(A_n) > 0$ for all large $n$.
+
+	iii) Let $B = \{\omega:\;f(\omega) = \infty\}$. Then $f \geq f\mathbb{I}_B = \infty \cdot \mathbb{I}_B$. So $\infty > \int f d\mu \geq \infty \cdot \mu(B) \implies \mu(B) = 0$.
+
+	iv) Let $G = \{\omega:\;f(\omega) = \infty\}$. By i), $\mu(G^c) = 0$ implies $\int f\mathbb{I}_{G^c} d\mu = \int g\mathbb{I}_{G^c} d\mu = 0$. So $\int f d\mu = \int f\mathbb{I}_G d\mu \leq \int g\mathbb{I}_G d\mu = \int g d\mu$.
+
+	v) Trivially follows from iv).
+\end{proof}
+
+\section{Lecture 17, October 5}
+
+If $f$ is measurable, then both $f^+ = \max(0,f)$ and $f^- = \max(0,-f)$ are measurable, and $f = f^+-f^-$, $|f| = f^++f^-$.
+
+If $\int f^+ d\mu < \infty$ or $\int f^- d\mu < \infty$, then $\int f(\omega) d\mu(\omega) = \int f(\omega) \mu(d\omega) = \int f d\mu = \int f^+ d\mu - \int f^- d\mu$. This is called the \emph{definite integral} of $f$.
+
+\begin{definition}[Integrable function] \label{def:integrable}
+	$f$ is \emph{integrable} if $\int |f| d\mu < \infty$. In this case, $\int f^+ d\mu + \int f^- d\mu = \int |f| d\mu < \infty$. So $f$ is integrable if and only if both $\int f^+ d\mu$ and $\int f^- d\mu$ are finite.
+\end{definition}
+
+If $f$ has a definite integral and $f = g$ a.e., then $\int f d\mu = \int g d\mu$. This is easily verified: $f^+ = g^+$ a.e. and $f^- = g^-$ a.e., so $\int f^{\pm} d\mu = \int g^{\pm} d\mu$.
+
+\begin{theorem} \label{thm:integrable-properties}
+	Suppose $f,g$ are integrable functions.
+	\begin{enumerate}[label=\roman*)]
+		\item $f \leq g$ a.e. $\implies \int f d\mu \leq \int g \mu$.
+		\item If $a$ and $b$ finite real numbers, then $(af + bg)$ is integrable and $\int (af + bg) d\mu = a \int f d\mu + b \int g d\mu$.
+		\item $|\int f d\mu| \leq \int |f| d\mu$ and $|\int f d\mu - \int g d\mu| \leq \int |f-g| d\mu$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	i) Suppose $f \leq g$ a.e. This implies that $f^+ \leq g^+$ a.e. and $g^- \leq f^-$ a.e. As $\int f^+ d\mu \leq \int g^+ d\mu < \infty$, and $\int g^- d\mu \leq \int f^- d\mu < \infty$, we have $\int f d\mu \leq \int g d\mu$.
+
+	ii) $af+bg$ is integrable, since $|af+bg| \leq |a||f| + |b||g|$. For $a>0$, $\int af d\mu = \int (af)^+ d\mu - \int (af)^- d\mu = a \int f^+ d\mu - a \int f^- d\mu = a \int f d\mu$. Similarly for $a < 0$. So it is enough to prove the result for one value of $a$. For simplicity, take $a=b=1$. Note that $(f+g)^+ - (f+g)^- = f+g = f^+ + g^+ - f^- - g^-$ implies $(f+g)^+ + f^- + g^- = (f+g)^- + f^+ + g^+$. Since these functions are all non-negative, $\int (f+g)^+ d\mu + \int f^- d\mu + \int g^- d\mu = \int (f+g)^- d\mu + \int f^+ d\mu + \int g^+ d\mu$. A rearrangement of this completes the proof.
+
+	iii) By i) and ii), $-|f| \leq f \leq |f|$ implies $- \int |f| d\mu \leq \int f d\mu \leq \int |f| d\mu$.
+\end{proof}
+
+\begin{example}
+	Suppose $\mathcal{F}$ consists of all subsets of $\Omega = \{1,2,\dots\}$ and $\mu$ is the counting measure. A sequence $\{x_n\}$ of real numbers can be considered a measurable function $f$, $f(n) = x_n$. So $f$ is integrable if and only if the sequence $\{x_n\}$ is absolutely convergent. The sequence given by $x_m = (-1)^m \frac{1}{m}$, for example, is not integrable.
+\end{example}
+
+\begin{example}
+	Take $\Omega$, $\mathcal{F}$, and $\mu$ as in the previous example. Let $f \equiv 0$, $f_n = \mathbb{I}_{\{n,n+1,\dots\}}$. Then $\lim_n f_n(m) \to f(m)$ for all $m$, but $\int f d\mu = 0$ and $\int f_n d\mu = \infty$ for all $n$.
+\end{example}
+
+\begin{example}
+	Suppose $f$ is a Borel function, bounded on bounded intervals. Both $f_n = f\mathbb{I}_{(-n,n)}$, $g_n = f\mathbb{I}_{(-n,n+1)}$ converge pointwise to $f$. Even if the limits $\lim_n \int f_n d\lambda$ and $\lim_n \int g_n d\lambda$ exist, they may not be equal. For example, $f(x)=x$.
+\end{example}
+
+\begin{example}
+	The function $f = \sum_{k=1}^\infty (-1)^k \frac{1}{k} \mathbb{I}_{(k,k+1)}$ has no integral, even though the limit $\lim_n \int f \mathbb{I}_{(-n,n)} d\lambda$ exists.
+\end{example}
+
+\begin{example}
+	Let $f_n = n^2 \mathbb{I}_{(0,1/n)}$, and $f \equiv 0$. Then $f_n \to f$ everywhere, $\int f d\lambda = 0$ and $\int f_n d\lambda = n \to \infty$.
+\end{example}
+
+\section{Lecture 18, October 7}
+
+Does $f_n \to f$ a.e. imply that $\int f_n d\mu \to \int f d\mu$? Not always; see Examples 3.4 and 3.7 above. However, under certain conditions this is indeed true.
+
+\begin{theorem}[Monotone Convergence Theorem] \label{thm:monotone-convergence}
+	If $f_n$ and $f$ satisfy $0 \leq f_n \uparrow f$ a.e., then $\int f_n d\mu \uparrow \int f d\mu$.
+\end{theorem}
+
+\begin{proof}
+	There exists a measurable set $A$ such that $\mu(A^c) = 0$ and $0 \leq f_n \mathbb{I}_A \uparrow f \mathbb{I}_A$. So $\int f_n d\mu = \int f_n \mathbb{I}_A d\mu \to \int f \mathbb{I}_A d\mu = \int f d\mu$.
+\end{proof}
+
+\begin{example}
+	For each $m$, $0 \leq x_{nm} \uparrow x_m$ as $n \to \infty$ implies $\lim_n \sum_m x_{nm} = \sum_m x_m$ (see examples 16.1 and 16.3 in Billingsley). This is false for decreasing limits, however. As a counterexample, let $y_{nm} = \mathbb{I}_{\{m \geq n\}}$ and $y_m = 0$. Then $0 \leq y_{nm} \downarrow y_m$, but $\sum_m y_{nm} = \infty \neq 0 = \sum_m y_m$.
+\end{example}
+
+\begin{example}
+	Consider the measure space $(\Omega,\mathcal{F},\mu)$, and let $\mathcal{F}_0$ be a sub $\sigma$-field of $\mathcal{F}$. Let the measure $\mu_0$ on $\mathcal{F}_0$ be the restriction of $\mu$. Finally, let $f$ be measurable $\mathcal{F}_0$. Then $\int f d\mu = \int f d\mu_{0}$. This holds for $f = \mathbb{I}_A$ for all $A \in \mathcal{F}_0$, so therefore it holds for simple functions, increasing limits of non-negative $f$, and for all measurable functions $f$, where at least one of $\int f^+ d\mu$ and $\int f^- d\mu$ is finite.
+\end{example}
+
+\begin{example}
+	If $\mu$ and $\mu_n$ are measures and $f \geq 0$, and if $\int f d\mu = \sum_n \int f d\mu_n$, then $\mu(A) = \sum_n \mu_n(A)$ for $A \in \mathcal{F}$. See example 16.5 in Billingsley. 
+\end{example}
+
+\begin{theorem}[Fatou's Lemma] \label{thm:fatou-lemma}
+	For $f_n \geq 0$,
+	\[
+		\int \liminf_n f_n d\mu \leq \liminf_n \int f_n d\mu.
+	\]
+\end{theorem}
+
+\begin{proof}
+	If $g_n = \inf_{k \geq n} f_k$, then $0 \leq g_n \uparrow g = \liminf_n f_n$. So $\int f_n d\mu \geq \int g_n d\mu \to \int g d\mu$.
+\end{proof}
+
+The next theorem tells us when limits and integrals can be interchanged.
+
+\begin{theorem}[Lebesgue's Dominated Convergence Theorem] \label{thm:dominated-convergence}
+	If $|f_n| \leq g$ for some integrable $g$ and if $f_n \to f$ a.e., then $f$ and $f_n$ are integrable and $\lim_n \int f_n d\mu = \int \lim_n f_n d\mu = \int f d\mu$.
+\end{theorem}
+
+\begin{proof}
+	Since $g+f_n$ and $g-f_n$ are non-negative, Fatou's Lemma (Theorem~\ref{thm:fatou-lemma}) tells us that 
+	\begin{align*}
+		\int g d\mu + \int \liminf_n f_n d\mu &= \int \liminf_n (g+f_n) d\mu \\
+		&\leq \liminf_n \int (g+f_n) d\mu \\
+		&= \int g d\mu + \liminf_n \int f_n d\mu
+	\end{align*}
+	and
+	\begin{align*}
+		\int g d\mu - \int \liminf_n f_n d\mu &= \int \liminf_n (g-f_n) d\mu \\
+		&\leq \liminf_n \int (g-f_n) d\mu \\
+		&= \int g d\mu - \liminf_n \int f_n d\mu.
+	\end{align*}
+	Since $g$ is integrable, $\int g d\mu$ is finite and non-negative, and thus we can cancel it. So
+	\[
+		\int \liminf_n f_n d\mu \leq \liminf_n \int f_n d\mu \leq \limsup_n \int f_n d\mu \leq \int \limsup_n f_n d\mu.
+	\]
+\end{proof}
+
+Below are some properties of integrals.
+\vspace{10pt}
+
+\begin{enumerate}[label=\arabic*.]
+	\item \textbf{The Weierstrass M-test for series.} Suppose for each $m$, $x_{nm} \to x_m$ as $n \to \infty$ and $|x_{nm}| \leq M_m$. If $\sum_m M_m < \infty$, then $\sum_m x_{nm} \to \sum_m x_m$.
+	\item \textbf{Bounded convergence theorem.} If $\mu$ is a finite measure and the $f_n$ are uniformly bounded, then $f_n \to f$ a.e. implies that $\int f_n d\mu \to \int f d\mu$.
+	\item If $f_n \geq 0$, then $\int \sum_n f_n d\mu = \sum_n \int f_n d\mu$.
+	\item If $\sum_n f_n$ converges a.e. and $|\sum_{k=1}^n| \leq g$ for some integrable $g$, then $\sum_n f_n$ and $f_n$ are integrable and $\int \sum_n f_n d\mu = \sum_n \int f_n d\mu$.
+	\item If $\sum_n \int |f_n| d\mu < \infty$, then $\sum_n f_n$ converges absolutely a.e. and is integrable, and $\int \sum_n f_n d\mu = \sum_n \int f_n d\mu$.
+	\item The integral of $f$ over a set is defined as $\int_A f d\mu = \int \mathbb{I}_A f d\mu$. If $A_1,A_2,\dots$ are disjoint, and if $f$ is either non-negative or integrable, then $\int_{\bigcup_n A_n} f d\mu = \sum_n f_{A_n} f d\mu$.
+\end{enumerate}
+
+\section{Lecture 19, October 9}
+
+One way to guarantee the convergence of a sequence of functions is to determine that the integral of the tail of the sequence goes to zero uniformly. How can we show the convergence of integrals?
+
+\begin{definition} \label{def:uniform-integrability}
+	The sequence $\{f_n\}$ is \emph{uniformly integrable} (u.i.) if
+	\[
+		\lim_{\alpha \to \infty} \sup_n \int_{\{|f_n| \geq \alpha\}} |f_n| d\mu = 0.
+	\]
+\end{definition}
+
+If $\sup_n \int |f_n|^{\beta} d\mu < \infty$ for some $\beta > 1$, then $\{f_n\}$ is u.i. Notice that because the integral in Definition~\ref{def:uniform-integrability} is taken over the set on which $\{|f_n| \geq \alpha\}$, the quantity $\frac{|f_n|}{\alpha}$ is always non-negative. So we can rewrite as
+\begin{align*}
+	\int_{\{|f_n| \geq \alpha\}} |f_n| d\mu &\leq |f_n| \left( \frac{|f_n|}{\alpha} \right)^{\beta-1} d\mu \\
+	&\leq \frac{1}{\alpha^{\beta-1}} \int |f_n|^\beta d\mu \\
+	&\leq \frac{1}{\alpha^{\beta-1}} \sup_{k \geq 1} \int |f_k|^\beta d\mu \to 0 \textrm{ as } \alpha \to \infty.
+\end{align*}
+
+If $\{f_n\}$ and $\{g_n\}$ are uniformly integrable, then so is $\{f_n + g_n\}$. We aim to show that $\int_{\{|f+g| \geq 2\alpha\}} |f+g| d\mu \to 0$. Use the fact that $|f+g| \leq |f|+|g| \leq 2h$, where $h = \max(|f|,|g|)$. So taking region of integration into account, we have $2\alpha \leq |f+g| \leq 2h$, and so $\alpha \leq h$. Therefore
+\begin{align*}
+	\int_{\{|f+g| \geq 2\alpha\}} |f+g| d\mu &\leq 2 \int_{\{h \geq \alpha\}} h d\mu \\
+	&\leq 2 \int_{\{|f| \geq \alpha\}} |f| d\mu + 2 \int_{\{|g| \geq \alpha\}} |g| d\mu.
+\end{align*}
+So
+\[
+	\sup_n \int_{\{|f_n+g_n| \geq 2\alpha\}} |f_n+g_n| \leq 2 \sup_n \int_{\{|f_n| \geq \alpha\}} |f_n| d\mu + 2 \sup_n \int_{\{|g_n| \geq \alpha\}} |g_n| d\mu \xrightarrow[\alpha \to \infty]{} 0.
+\]
+
+\begin{theorem}
+	Suppose $\mu$ is a finite measure and $f_n \to f$ a.e.
+	\begin{enumerate}[label=\alph*)]
+		\item If $\{f_n\}$ is u.i., then $f$ is integrable and $\int f_n d\mu \to \int f d\mu$.
+		\item If $f$, $f_n$ are non-negative and integrable, then $\int f_n d\mu \to \int f d\mu$ implies $\{f_n\}$ is u.i.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	a) First of all,
+	\begin{align*}
+		\int |f_n| d\mu &\leq \alpha \mu(\Omega) + \sup_k \int_{\{|f_k \geq \alpha\}} |f_k| d\mu \\
+		&\leq \alpha \mu(\Omega) + 1
+	\end{align*}
+	since the supremum in the right hand side is less than 1 for large enough $\alpha$. This is finite, so we can use Fatou's Lemma to see that
+	\[
+		\int |f| d\mu \leq \lim_n \int |f_n| d\mu < \infty
+	\]
+	and thus $f$ is integrable. If $\mu(|f|=\alpha) = 0$, then $f_n\mathbb{I}_{\{|f_n| < \alpha\}} \to f\mathbb{I}_{\{|f| < \alpha\}}$ a.e. and by the bounded convergence theorem, $\int f_n\mathbb{I}_{\{|f_n| < \alpha\}} d\mu \to \int f\mathbb{I}_{\{|f| < \alpha\}} d\mu$. Uniform integrability of $f_n$ and $f$ give us that the other parts of the integrals converge. This yields the result.
+
+	b) If $\mu(|f|=\alpha)=0$, then $\int f_n\mathbb{I}_{\{|f_n| \geq \alpha\}} d\mu \to \int f\mathbb{I}_{\{|f| \geq \alpha\}} d\mu$. The result follows since $f$ is integrable.
+\end{proof}
+
+\begin{theorem} \label{thm:ui-equivalence}
+	Suppose $\mu$ is a finite measure, $f$ and $f_n$ are integrable, and that $f_n \to f$ a.e. The following are equivalent:
+	\begin{enumerate}[label=\roman*)]
+		\item $\{f_n\}$ is u.i.
+		\item $\int |f_n-f| d\mu \to 0$.
+		\item $\int |f_n| d\mu \to \int |f| d\mu$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	i) implies the uniform integrability of $\{|f_n-f|\}$. So ii) follows by the previous theorem. ii) implies iii), since $||f_n|-|f|| \leq |f_n - f|$. Finally, i) follows from iii) using the theorem above.
+\end{proof}
+
+As a final note on this topic, if $|f_n| \leq g$ for some integrable $g$, then $\{f_n\}$ is u.i. However, the converse is not true. Consider the measure space $((0,1],\mathcal{B},\lambda)$. $\lambda$ is a finite measure. Take the sequence of functions
+\[
+	f_n = \frac{n}{\log n} \mathbb{I}_{(0,1/n)}, \qquad n \geq 3.
+\]
+The $f_n$ are u.i. because the integral is simply $1/\log n$, which goes to zero. However, the sequence is not dominated by any integrable function $g$.
+
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
-\chapter*{Bibliography}
-\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
-\section*{Books}
-\addcontentsline{toc}{section}{Books}
-\printbibliography[heading=bibempty,type=book]
-\section*{Articles}
-\addcontentsline{toc}{section}{Articles}
-\printbibliography[heading=bibempty,type=article]
+% \chapter*{Bibliography}
+% \addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
+% \section*{Books}
+% \addcontentsline{toc}{section}{Books}
+% \printbibliography[heading=bibempty,type=book]
+% \section*{Articles}
+% \addcontentsline{toc}{section}{Articles}
+% \printbibliography[heading=bibempty,type=article]
 
 %----------------------------------------------------------------------------------------
 %	INDEX
